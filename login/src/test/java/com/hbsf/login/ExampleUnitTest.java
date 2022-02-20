@@ -1,4 +1,4 @@
-package com.example.studyforum;
+package com.hbsf.login;
 
 import org.junit.Test;
 

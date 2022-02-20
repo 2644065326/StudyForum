@@ -1,0 +1,29 @@
+ext {
+    isRelease = false;
+
+    app_android = [
+            compileSdk : 31,
+            applicationId : "com.hbsf.studyforum",
+            minSdk : 21,
+            targetSdk: 31,
+            versionCode : 1,
+            versionName : "1.0",
+            testInstrumentationRunner : "androidx.test.runner.AndroidJUnitRunner"
+    ]
+
+
+    app_appid = [
+            "login": "com.hbsf.login",
+    ]
+
+    dependencies_version = [
+            appcompat : "1.2.0",
+            material : "1.3.0",
+            constraintlayout : "2.0.4",
+            junit : "4.+",
+            ext_junit : "1.1.2",
+            espresso_core : "3.3.0",
+    ]
+
+
+}

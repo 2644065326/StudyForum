@@ -8,3 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "StudyForum"
 include ':app'
+include ':login'
+include ':common'
+include ':arouter'
