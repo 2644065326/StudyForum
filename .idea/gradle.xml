@@ -12,6 +12,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arouter" />
+            <option value="$PROJECT_DIR$/arouter/arouter_annotation" />
+            <option value="$PROJECT_DIR$/arouter/arouter_api" />
+            <option value="$PROJECT_DIR$/arouter/arouter_compiler" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/login" />
           </set>

@@ -17,6 +17,12 @@ android {
         versionName app_android.versionName
 
         testInstrumentationRunner app_android.testInstrumentationRunner
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // project.getName() == app
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT]
+            }
+        }
     }
 
     buildTypes {

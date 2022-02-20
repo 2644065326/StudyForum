@@ -1,24 +1,18 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
 }
 
 android {
     compileSdk app_android.compileSdk
 
     defaultConfig {
-        applicationId app_android.applicationId
         minSdk app_android.minSdk
         targetSdk app_android.targetSdk
         versionCode app_android.versionCode
         versionName app_android.versionName
 
         testInstrumentationRunner app_android.testInstrumentationRunner
-        javaCompileOptions {
-            annotationProcessorOptions {
-                // project.getName() == app
-                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT]
-            }
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -34,14 +28,10 @@ android {
 }
 
 dependencies {
+
     implementation "androidx.appcompat:appcompat:${dependencies_version.appcompat}"
     implementation "com.google.android.material:material:${dependencies_version.material}"
-    implementation "androidx.constraintlayout:constraintlayout:${dependencies_version.constraintlayout}"
     testImplementation "junit:junit:${dependencies_version.junit}"
     androidTestImplementation "androidx.test.ext:junit:${dependencies_version.ext_junit}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${dependencies_version.espresso_core}"
-    if (isRelease) {
-        implementation project(":login")
-    }
-    implementation project(":common")
 }
