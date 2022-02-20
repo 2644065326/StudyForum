@@ -1,7 +1,7 @@
 ext {
     isRelease = true;
 
-    packageNameForAPT = "com.hbsf.arouter";
+    packageNameForAPT = "com.hbsf.studyforum";
     app_android = [
             compileSdk : 31,
             applicationId : "com.hbsf.studyforum",

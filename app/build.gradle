@@ -44,4 +44,8 @@ dependencies {
         implementation project(":login")
     }
     implementation project(":common")
+
+    implementation project(":arouter:arouter_annotation")
+
+    annotationProcessor project(':arouter:arouter_compiler')
 }

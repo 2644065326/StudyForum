@@ -45,4 +45,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:${dependencies_version.ext_junit}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${dependencies_version.espresso_core}"
     implementation project(":common")
+    implementation project(":arouter:arouter_annotation")
+    annotationProcessor project(':arouter:arouter_compiler')
 }
