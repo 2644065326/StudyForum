@@ -1,7 +1,10 @@
 ext {
     isRelease = true;
 
-    packageNameForAPT = "com.hbsf.studyforum";
+    packageNameForAPT = [
+            app : "com.hbsf.app",
+            login : "com.hbsf.login"
+    ];
     app_android = [
             compileSdk : 31,
             applicationId : "com.hbsf.studyforum",

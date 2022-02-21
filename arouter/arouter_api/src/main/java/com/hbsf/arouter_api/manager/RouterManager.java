@@ -1,4 +1,4 @@
-package com.hbsf.arouter_api;
+package com.hbsf.arouter_api.manager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.util.LruCache;
 import androidx.annotation.RequiresApi;
 
 import com.hbsf.arouter_annotation.bean.RouterBean;
+import com.hbsf.arouter_api.ARouterGroup;
+import com.hbsf.arouter_api.ARouterPath;
 
 
 /**
@@ -90,7 +92,7 @@ public class RouterManager {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public Object navigation(Context context, BundleManager bundleManager) {
         // 例如：寻找 ARouter$$Group$$personal  寻址   ARouter$$Group$$order   ARouter$$Group$$app
-        String groupClassName = context.getPackageName() + "." + FILE_GROUP_NAME + group;
+        String groupClassName = "com.hbsf." + group + "." + "arouter.group." +FILE_GROUP_NAME + group;
         Log.e("derry >>>", "navigation: groupClassName=" + groupClassName);
 
 

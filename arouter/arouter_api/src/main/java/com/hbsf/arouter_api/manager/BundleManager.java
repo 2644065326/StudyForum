@@ -1,4 +1,4 @@
-package com.hbsf.arouter_api;
+package com.hbsf.arouter_api.manager;
 
 import android.content.Context;
 import android.os.Build;

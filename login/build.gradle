@@ -20,7 +20,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 // project.getName() == app
-                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT]
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.login]
             }
         }
     }

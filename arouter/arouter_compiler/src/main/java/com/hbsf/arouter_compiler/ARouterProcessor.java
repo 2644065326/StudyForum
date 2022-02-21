@@ -229,7 +229,7 @@ public class ARouterProcessor extends AbstractProcessor {
             methodBuidler.addStatement("$N.put($S, $T.class)",
                     ProcessorConfig.GROUP_VAR1, // groupMap.put
                     entry.getKey(), // login,app
-                    ClassName.get(aptPackage, entry.getValue()));
+                    ClassName.get(aptPackage + ProcessorConfig.PACKAGE_PATH_NAME, entry.getValue()));
         }
 
         // return groupMap;
@@ -242,7 +242,7 @@ public class ARouterProcessor extends AbstractProcessor {
                 aptPackage + "." + finalClassName);
 
         // 生成类文件：ARouter$$Group$$app
-        JavaFile.builder(aptPackage, // 包名
+        JavaFile.builder(aptPackage + ProcessorConfig.PACKAGE_GEGROUP_NAME, // 包名
                 TypeSpec.classBuilder(finalClassName) // 类名
                 .addSuperinterface(ClassName.get(groupType)) // 实现ARouterLoadGroup接口 implements ARouterGroup
                 .addModifiers(Modifier.PUBLIC) // public修饰符
@@ -319,7 +319,7 @@ public class ARouterProcessor extends AbstractProcessor {
                     aptPackage + "." + finalClassName);
 
             // 生成类文件：ARouter$$Path$$Login
-            JavaFile.builder(aptPackage, // 包名  APT 存放的路径
+            JavaFile.builder(aptPackage + ProcessorConfig.PACKAGE_PATH_NAME, // 包名  APT 存放的路径
                     TypeSpec.classBuilder(finalClassName) // 类名
                             .addSuperinterface(ClassName.get(pathType)) // 实现ARouterLoadPath接口  implements ARouterPath==pathType
                             .addModifiers(Modifier.PUBLIC) // public修饰符

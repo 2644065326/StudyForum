@@ -1,4 +1,4 @@
-package com.hbsf.studyforum;
+package com.hbsf.app;
 
 import android.content.Context;
 
