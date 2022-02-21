@@ -61,6 +61,8 @@ public interface ProcessorConfig {
 
     public static final String STRING = "java.lang.String";
 
+    public static final String SERIALIZABLE = "java.io.Serializable";
+
     String CALL = "com.hbsf.arouter_api.Call";
 
     String ROUTER_MANAGER = "RouterManager";

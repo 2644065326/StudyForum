@@ -12,6 +12,7 @@ import com.squareup.javapoet.TypeName;
 import javax.annotation.processing.Messager;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
@@ -45,11 +46,14 @@ public class ParameterFactory {
     // 获取元素接口信息（生成类文件需要的接口实现类）
     private TypeMirror callMirror;
 
+    private Elements elementUtils;
+
     // 不想用户使用此构造函数，必须使用Builder设计模式
     private ParameterFactory(Builder builder) {
         this.messager = builder.messager;
         this.className = builder.className;
         this.typeUtils = builder.typeUtils;
+        this.elementUtils = builder.elementUtils;
         // 生成此方法
         // 通过方法参数体构建方法体：public void getParameter(Object target) {
         method = MethodSpec.methodBuilder(ProcessorConfig.PARAMETER_METHOD_NAME)
@@ -101,6 +105,9 @@ public class ParameterFactory {
         // TODO t.name = t.getIntent().getStringExtra("name");
         String methodContent = finalValue + " = t.getIntent().";
 
+        TypeElement serializableElement = elementUtils.getTypeElement(ProcessorConfig.SERIALIZABLE);
+        TypeMirror serializableMirror = serializableElement.asType();
+
         // TypeKind 枚举类型不包含String
         if (type == TypeKind.INT.ordinal()) {
             // t.s = t.getIntent().getIntExtra("age", t.age);
@@ -121,11 +128,13 @@ public class ParameterFactory {
                         ClassName.get(ProcessorConfig.AROUTER_API_PACKAGE + ".manager", ProcessorConfig.ROUTER_MANAGER),
                         annotationValue);
                 return;
+            } else if (typeUtils.isSubtype(typeMirror, serializableMirror)){
+                methodContent = "t.getIntent().getSerializableExtra($S)";
             }
         }
-
-        // 健壮代码
-        if (methodContent.endsWith(")")) { // 抱歉  全部的 getBooleanExtra  getIntExtra   getStringExtra
+        if (methodContent.contains("Serializable")) {
+            method.addStatement(finalValue + "=($T)" + methodContent, ClassName.get(element.asType()) ,annotationValue);
+        } else if (methodContent.endsWith(")")) { // 抱歉  全部的 getBooleanExtra  getIntExtra   getStringExtra
             // 参数二 9 赋值进去了
             // t.age = t.getIntent().getBooleanExtra("age", t.age ==  9);
             method.addStatement(methodContent, annotationValue);

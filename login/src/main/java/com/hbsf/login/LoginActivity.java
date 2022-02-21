@@ -12,11 +12,16 @@ import com.hbsf.arouter_annotation.ARouter;
 import com.hbsf.arouter_annotation.Parameter;
 import com.hbsf.arouter_api.manager.ParameterManager;
 import com.hbsf.arouter_api.manager.RouterManager;
+import com.hbsf.common.bean.TestBean;
+
+import java.io.Serializable;
 
 @ARouter(path = "/login/LoginActivity")
 public class LoginActivity extends AppCompatActivity {
     private Button button1;
     private Context context;
+    @Parameter
+    TestBean testBean;
     @Parameter
     String name;
     @Override
@@ -36,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         ParameterManager.getInstance().loadParameter(this);
         Log.e("ARouter data", name);
+        Log.e("ARouter data", testBean.toString());
 
     }
 }

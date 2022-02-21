@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 
 import com.hbsf.arouter_api.Call;
 
+import java.io.Serializable;
+
 /**
  * 跳转时 ，用于参数的传递
  */
@@ -44,6 +46,11 @@ public class BundleManager {
 
     public BundleManager withInt(@NonNull String key, @Nullable int value) {
         bundle.putInt(key, value);
+        return this;
+    }
+
+    public BundleManager withSerializable(@NonNull String key, @Nullable Serializable object) {
+        bundle.putSerializable(key, object);
         return this;
     }
 

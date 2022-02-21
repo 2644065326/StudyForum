@@ -12,8 +12,11 @@ import com.hbsf.arouter_annotation.ARouter;
 import com.hbsf.arouter_annotation.Parameter;
 import com.hbsf.arouter_api.manager.ParameterManager;
 import com.hbsf.arouter_api.manager.RouterManager;
+import com.hbsf.common.bean.TestBean;
 import com.hbsf.common.home.HomeService;
 import com.hbsf.common.login.LoginService;
+
+import java.io.Serializable;
 
 @ARouter(path = "/app/MainActivity")
 public class MainActivity extends AppCompatActivity {
@@ -29,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         button1 = findViewById(R.id.button1);
+        TestBean testBean = new TestBean();
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RouterManager.getInstance()
                         .build("/login/LoginActivity")
+                        .withSerializable("testBean", testBean)
                         .withString("name", "app")
                         .navigation(context);
             }

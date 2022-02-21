@@ -142,7 +142,7 @@ public class RouterManager {
                         case ACTIVITY:
                             Intent intent = new Intent(context, routerBean.getMyClass()); // 例如：getClazz == Order_MainActivity.class
                             intent.putExtras(bundleManager.getBundle()); // 携带参数
-                            context.startActivity(intent, bundleManager.getBundle());
+                            context.startActivity(intent);
                             break;
                         case CALL:
                             Class<?> clazz = routerBean.getMyClass();
