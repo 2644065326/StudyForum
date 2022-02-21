@@ -9,7 +9,9 @@ public interface ProcessorConfig {
     String OPTIONS = "moduleName"; // 同学们：目的是接收 每个module名称
     String APT_PACKAGE = "packageNameForAPT"; // 同学们：目的是接收 包名（APT 存放的包名）
 
-
+    String PACKAGE_PATH_NAME = ".arouter.path";
+    String PACKAGE_GEGROUP_NAME = ".arouter.group";
+    String PACKAGE_PARAMETER_NAME = ".arouter.parameter";
 
     // String全类名
     public static final String STRING_PACKAGE = "java.lang.String";
@@ -43,4 +45,19 @@ public interface ProcessorConfig {
 
     // 路由组，GROUP 最终要生成的 文件名
     String GROUP_FILE_NAME = "ARouter$$Group$$";
+
+    String PARAMETER_PACKAGE = "com.hbsf.arouter_annotation.Parameter";
+
+    String AROUTER_AIP_PARAMETER_GET = AROUTER_API_PACKAGE + ".ParameterGet";
+
+    // ARouter api 的 ParameterGet 方法参数的名字
+    String PARAMETER_NAME = "targetParameter";
+
+    // ARouter api 的 ParmeterGet 方法的名字
+    String PARAMETER_METHOD_NAME = "getParameter";
+
+    // ARouter aip 的 ParmeterGet 的 生成文件名称 $$Parameter
+    String PARAMETER_FILE_NAME = "$$Parameter";
+
+    public static final String STRING = "java.lang.String";
 }
