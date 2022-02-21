@@ -111,6 +111,10 @@ public class ARouterProcessor extends AbstractProcessor {
             return false;
         }
 
+        //图片传输相关
+        TypeElement callType = elementTool.getTypeElement(ProcessorConfig.CALL);
+        TypeMirror callMirror = callType.asType();
+
         // 全部被注解的集合，通过这个可以拿到相应的Activity
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ARouter.class);
 
@@ -139,6 +143,8 @@ public class ARouterProcessor extends AbstractProcessor {
             TypeMirror elementMirror = element.asType(); // Main2Activity的具体详情 例如：继承了 Activity
             if (typeTool.isSubtype(elementMirror, activityMirror)) {
                 routerBean.setTypeEnum(RouterBean.TypeEnum.ACTIVITY);
+            } else if (typeTool.isSubtype(elementMirror, callMirror)) {
+                routerBean.setTypeEnum(RouterBean.TypeEnum.CALL);
             } else {
                 throw new RuntimeException("@ARouter must be in ctivity above");
             }

@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 import com.hbsf.arouter_annotation.bean.RouterBean;
 import com.hbsf.arouter_api.ARouterGroup;
 import com.hbsf.arouter_api.ARouterPath;
+import com.hbsf.arouter_api.Call;
 
 
 /**
@@ -143,6 +144,11 @@ public class RouterManager {
                             intent.putExtras(bundleManager.getBundle()); // 携带参数
                             context.startActivity(intent, bundleManager.getBundle());
                             break;
+                        case CALL:
+                            Class<?> clazz = routerBean.getMyClass();
+                            Call call = (Call) clazz.newInstance();
+                            bundleManager.setCall(call);
+                            return  bundleManager.getCall();
                     }
                 }
             }

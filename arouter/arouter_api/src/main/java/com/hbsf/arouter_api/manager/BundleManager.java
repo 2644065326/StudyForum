@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.hbsf.arouter_api.Call;
+
 /**
  * 跳转时 ，用于参数的传递
  */
@@ -14,6 +16,16 @@ public class BundleManager {
 
     // Intent传输  携带的值，保存到这里
     private Bundle bundle = new Bundle();
+
+    private Call call;
+
+    public Call getCall() {
+        return call;
+    }
+
+    public void setCall(Call call) {
+        this.call = call;
+    }
 
     public Bundle getBundle() {
         return this.bundle;

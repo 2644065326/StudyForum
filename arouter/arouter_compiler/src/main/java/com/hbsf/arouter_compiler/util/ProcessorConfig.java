@@ -60,4 +60,8 @@ public interface ProcessorConfig {
     String PARAMETER_FILE_NAME = "$$Parameter";
 
     public static final String STRING = "java.lang.String";
+
+    String CALL = "com.hbsf.arouter_api.Call";
+
+    String ROUTER_MANAGER = "RouterManager";
 }

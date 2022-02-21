@@ -6,6 +6,7 @@ import com.hbsf.arouter_compiler.util.ProcessorUtils;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
+import com.squareup.javapoet.TypeName;
 
 
 import javax.annotation.processing.Messager;
@@ -13,6 +14,8 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
+import javax.lang.model.util.Elements;
+import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
 /*
@@ -36,16 +39,27 @@ public class ParameterFactory {
     // Messager用来报告错误，警告和其他提示信息
     private Messager messager;
 
+    // type(类信息)工具类，包含用于操作TypeMirror的工具方法
+    private Types typeUtils;
+
+    // 获取元素接口信息（生成类文件需要的接口实现类）
+    private TypeMirror callMirror;
+
     // 不想用户使用此构造函数，必须使用Builder设计模式
     private ParameterFactory(Builder builder) {
         this.messager = builder.messager;
         this.className = builder.className;
+        this.typeUtils = builder.typeUtils;
         // 生成此方法
         // 通过方法参数体构建方法体：public void getParameter(Object target) {
         method = MethodSpec.methodBuilder(ProcessorConfig.PARAMETER_METHOD_NAME)
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(builder.parameterSpec);
+
+        this.callMirror = builder.elementUtils
+                .getTypeElement(ProcessorConfig.CALL)
+                .asType();
     }
 
     /** 只有一行
@@ -100,6 +114,13 @@ public class ParameterFactory {
             if (typeMirror.toString().equalsIgnoreCase(ProcessorConfig.STRING)) {
                 // String类型
                 methodContent += "getStringExtra($S)"; // 没有默认值
+            }  else if (typeUtils.isSubtype(typeMirror, callMirror)) {
+                methodContent = "t." + fieldName + " = ($T) $T.getInstance().build($S).navigation(t)";
+                method.addStatement(methodContent,
+                        TypeName.get(typeMirror),
+                        ClassName.get(ProcessorConfig.AROUTER_API_PACKAGE + ".manager", ProcessorConfig.ROUTER_MANAGER),
+                        annotationValue);
+                return;
             }
         }
 
@@ -121,6 +142,12 @@ public class ParameterFactory {
         // Messager用来报告错误，警告和其他提示信息
         private Messager messager;
 
+        // 操作Element工具类 (类、函数、属性都是Element)
+        private Elements elementUtils;
+
+        // type(类信息)工具类，包含用于操作TypeMirror的工具方法
+        private Types typeUtils;
+
         // 类名，如：MainActivity
         private ClassName className;
 
@@ -138,6 +165,16 @@ public class ParameterFactory {
 
         public Builder setClassName(ClassName className) {
             this.className = className;
+            return this;
+        }
+
+        public Builder setElementUtils(Elements elementUtils) {
+            this.elementUtils = elementUtils;
+            return this;
+        }
+
+        public Builder setTypeUtils(Types typeUtils) {
+            this.typeUtils = typeUtils;
             return this;
         }
 
