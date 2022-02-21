@@ -1,12 +1,16 @@
-plugins {
-    id 'com.android.application'
+if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
 }
 
 android {
     compileSdk app_android.compileSdk
 
     defaultConfig {
-        applicationId app_android.applicationId
+        if (!isRelease) {
+            applicationId app_appid.home
+        }
         minSdk app_android.minSdk
         targetSdk app_android.targetSdk
         versionCode app_android.versionCode
@@ -16,7 +20,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 // project.getName() == app
-                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.app]
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.home]
             }
         }
     }
@@ -40,13 +44,7 @@ dependencies {
     testImplementation "junit:junit:${dependencies_version.junit}"
     androidTestImplementation "androidx.test.ext:junit:${dependencies_version.ext_junit}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${dependencies_version.espresso_core}"
-    if (isRelease) {
-        implementation project(":login")
-        implementation project(":home")
-    }
     implementation project(":common")
-
     implementation project(":arouter:arouter_annotation")
-
     annotationProcessor project(':arouter:arouter_compiler')
 }

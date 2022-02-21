@@ -1,4 +1,4 @@
-package com.hbsf.login;
+package com.hbsf.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +13,8 @@ import com.hbsf.arouter_annotation.Parameter;
 import com.hbsf.arouter_api.manager.ParameterManager;
 import com.hbsf.arouter_api.manager.RouterManager;
 
-@ARouter(path = "/login/LoginActivity")
-public class LoginActivity extends AppCompatActivity {
+@ARouter(path = "/home/HomeActivity")
+public class HomeActivity extends AppCompatActivity {
     private Button button1;
     private Context context;
     @Parameter
@@ -22,20 +22,19 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        context = this;
+        setContentView(R.layout.activity_home);
         button1 = findViewById(R.id.button1);
+        context = this;
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RouterManager.getInstance()
-                        .build("/home/HomeActivity")
-                        .withString("name", "login")
+                        .build("/app/MainActivity")
+                        .withString("name", "home")
                         .navigation(context);
             }
         });
         ParameterManager.getInstance().loadParameter(this);
         Log.e("ARouter data", name);
-
     }
 }
