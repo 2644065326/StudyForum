@@ -94,7 +94,7 @@ public class RouterManager {
     public Object navigation(Context context, BundleManager bundleManager) {
         // 例如：寻找 ARouter$$Group$$personal  寻址   ARouter$$Group$$order   ARouter$$Group$$app
         String groupClassName = "com.hbsf." + group + "." + "arouter.group." +FILE_GROUP_NAME + group;
-        Log.e("derry >>>", "navigation: groupClassName=" + groupClassName);
+        Log.e("navigation", "navigation: groupClassName=" + groupClassName);
 
 
         try {
