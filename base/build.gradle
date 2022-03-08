@@ -36,4 +36,24 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     api 'org.apache.commons:commons-collections4:4.1'
+
+
+    api 'com.squareup.okhttp3:okhttp:4.2.0'
+    api "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+    //AutoDispose解决RxJava内存泄漏
+    api 'com.uber.autodispose2:autodispose:2.0.0'
+    api 'com.uber.autodispose2:autodispose-android:2.0.0'
+    api 'com.uber.autodispose2:autodispose-lifecycle:2.0.0'
+    api 'com.uber.autodispose2:autodispose-androidx-lifecycle:2.0.0'
+
+    api "com.alibaba:fastjson:1.2.58"
+
+    api 'com.zyao89:zloading:1.2.0'
+
+
 }

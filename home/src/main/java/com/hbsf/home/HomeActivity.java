@@ -17,8 +17,7 @@ import com.hbsf.arouter_api.manager.RouterManager;
 public class HomeActivity extends AppCompatActivity {
     private Button button1;
     private Context context;
-    @Parameter
-    String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RouterManager.getInstance()
-                        .build("/app/MainActivity")
-                        .withString("name", "home")
-                        .navigation(context);
+
             }
         });
-        ParameterManager.getInstance().loadParameter(this);
-        Log.e("ARouter data", name);
+
     }
 }
