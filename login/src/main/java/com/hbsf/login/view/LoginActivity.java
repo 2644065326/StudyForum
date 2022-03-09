@@ -66,15 +66,14 @@ public class LoginActivity extends BaseMVPActivity<LoginPresenter> implements Lo
 
     private void LoginSuccess(LoginBean bean) {
         if (bean == null) {
-            return;
+           return;
         }
+        updataUserInfo(bean);
         RouterManager.getInstance()
                 .build("/home/HomeActivity")
                 .withString("name", "home")
                 .navigation(this);
-
-        updataUserInfo(bean);
-
+        finish();
     }
 
     private void updataUserInfo(LoginBean bean) {

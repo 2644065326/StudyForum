@@ -11,7 +11,7 @@
         android:name=".MainApplication"
         android:theme="@style/Theme.StudyForum">
         <activity
-            android:name="com.hbsf.app.MainActivity"
+            android:name="com.hbsf.login.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

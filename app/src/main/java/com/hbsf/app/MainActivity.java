@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     LoginService loginService;
     @Parameter(name = "/home/HomeServiceImpl")
     HomeService homeService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 .build("/login/LoginActivity")
                 .navigation(this);
 
-        ParameterManager.getInstance().loadParameter(this);
         loginService.printf();
         homeService.printf();
 
