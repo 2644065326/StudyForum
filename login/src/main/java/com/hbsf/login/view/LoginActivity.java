@@ -18,11 +18,11 @@ import com.hbsf.login.bean.LoginBean;
 import com.hbsf.login.presenter.LoginPresenter;
 
 @ARouter(path = "/login/LoginActivity")
-public class LoginActivity extends BaseMVPActivity<LoginPresenter> implements LoginContract.View {
+public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> implements LoginContract.View{
     private Button button;
     private EditText nameEdit;
     private EditText passwordEdit;
-    LoginPresenter presenter;
+    private LoginContract.Persenter presenter;
 
     @Override
     public int getLayoutId() {
@@ -47,28 +47,10 @@ public class LoginActivity extends BaseMVPActivity<LoginPresenter> implements Lo
                 }
             }
         });
-
     }
-
 
     @Override
-    public void onSuccess(BaseObjectBean<LoginBean> bean) {
-        if (bean == null) {
-            return;
-        }
-        if (bean.getErrorCode() != 1) {
-            LoginFail(bean.getErrorMsg());
-        } else {
-            LoginSuccess(bean.getResult());
-        }
-        KeyBoardUtils.closeKeybord(passwordEdit, this);
-    }
-
-    private void LoginSuccess(LoginBean bean) {
-        if (bean == null) {
-           return;
-        }
-        updataUserInfo(bean);
+    public void loginSuccess() {
         RouterManager.getInstance()
                 .build("/home/HomeActivity")
                 .withString("name", "home")
@@ -76,22 +58,11 @@ public class LoginActivity extends BaseMVPActivity<LoginPresenter> implements Lo
         finish();
     }
 
-    private void updataUserInfo(LoginBean bean) {
-        if (bean == null) {
-            return;
-        }
-        String email = bean.getEmail();
-        String icon = bean.getIcon();
-        String id = bean.getId() + "";
-        String password = bean.getPassword();
-        int type = bean.getType();
-        String username = bean.getUsername();
-        UserUtils.updataUserInfo(email,icon, id, password, type, username);
-    }
-
-    private void LoginFail(String msg) {
+    @Override
+    public void loginFail(String msg) {
         ToastUtils.showShort(getApplicationContext(), msg);
         passwordEdit.setText("");
     }
+
 
 }

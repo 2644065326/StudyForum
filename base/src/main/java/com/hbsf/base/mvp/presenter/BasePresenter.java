@@ -1,10 +1,11 @@
 package com.hbsf.base.mvp.presenter;
 
 
-import com.hbsf.base.model.BaseModel;
+import com.hbsf.base.api.IBaseModel;
+import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.mvp.view.IBaseMVPView;
 
-public abstract class BasePresenter<V extends IBaseMVPView, M extends BaseModel> {
+public abstract class BasePresenter<V extends IBaseMVPView, M extends IBaseModel> implements IBasePresenter<V, M> {
     protected V mView;
     protected M mModel;
 
@@ -17,7 +18,6 @@ public abstract class BasePresenter<V extends IBaseMVPView, M extends BaseModel>
         this.mModel = model;
     }
 
-    public abstract M getModel();
     /**
      * 绑定view，一般在初始化中调用该方法
      *

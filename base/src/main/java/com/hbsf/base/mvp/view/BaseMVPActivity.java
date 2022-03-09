@@ -1,22 +1,21 @@
 package com.hbsf.base.mvp.view;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 
+import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.utils.DialogUtils;
 import com.hbsf.base.view.BaseActivity;
 import com.hbsf.base.mvp.presenter.BasePresenter;
-import com.zyao89.view.zloading.ZLoadingDialog;
-import com.zyao89.view.zloading.Z_TYPE;
+
 
 import autodispose2.AutoDispose;
 import autodispose2.AutoDisposeConverter;
 import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider;
 
-public abstract class BaseMVPActivity<T extends BasePresenter> extends BaseActivity implements IBaseMVPView {
+public abstract class BaseMVPActivity<T extends IBasePresenter> extends BaseActivity implements IBaseMVPView {
 
     protected T mPresenter;
 

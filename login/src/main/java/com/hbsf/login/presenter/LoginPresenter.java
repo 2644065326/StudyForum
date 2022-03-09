@@ -2,6 +2,7 @@ package com.hbsf.login.presenter;
 
 import com.hbsf.base.api.IBaseView;
 import com.hbsf.base.bean.BaseObjectBean;
+import com.hbsf.base.model.BaseModel;
 import com.hbsf.base.mvp.presenter.BasePresenter;
 
 import com.hbsf.base.rx.BaseObserver;
@@ -18,9 +19,9 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel> implements LoginContract.Persenter {
+public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContract.Model> implements LoginContract.Persenter {
 
-    public LoginPresenter(LoginActivity view) {
+    public LoginPresenter(LoginContract.View view) {
         super(view);
     }
 
@@ -33,18 +34,23 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel> imp
         mModel.login(userName, passWord)
                 .compose(RxScheduler.Obs_io_main())
                 .to(mView.bindAutoDispose())
-                .subscribe(new BaseObserver<BaseObjectBean<LoginBean>, LoginActivity>(mView) {
-                    @Override
-                    public void success(@NonNull BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
-                        mView.onSuccess(loginBeanBaseObjectBean);
-                    }
-                });
+                .subscribe(new BaseObserver(mView, mModel));
+    }
+
+    @Override
+    public void loginSuccess() {
+        mView.loginSuccess();
+    }
+
+    @Override
+    public void loginFail(String msg) {
+        mView.loginFail(msg);
     }
 
 
     @Override
-    public LoginModel getModel() {
-        return new LoginModel();
+    public LoginContract.Model getModel() {
+        return new LoginModel(this);
     }
 
 }
