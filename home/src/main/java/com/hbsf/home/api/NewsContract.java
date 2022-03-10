@@ -15,11 +15,12 @@ public interface NewsContract {
     }
 
     interface View extends IBaseMVPView {
+        void showNews(NewsBean newsBean);
 
     }
 
 
     interface Persenter extends IBasePresenter<NewsContract.View, NewsContract.Model> {
-
+        void loadNewsList();
     }
 }

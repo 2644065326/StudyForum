@@ -2,6 +2,7 @@ package com.hbsf.base.mvp.view;
 
 import androidx.lifecycle.Lifecycle;
 
+import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.utils.DialogUtils;
 import com.hbsf.base.view.BaseFragment;
 import com.hbsf.base.mvp.presenter.BasePresenter;
@@ -10,7 +11,7 @@ import autodispose2.AutoDispose;
 import autodispose2.AutoDisposeConverter;
 import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider;
 
-public abstract class BaseMVPFragment<T extends BasePresenter> extends BaseFragment implements IBaseMVPView {
+public abstract class BaseMVPFragment<T extends IBasePresenter> extends BaseFragment implements IBaseMVPView {
 
     protected T mPresenter;
 

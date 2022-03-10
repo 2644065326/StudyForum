@@ -24,6 +24,6 @@ public class NewsModel extends BaseModel<NewsBean, NewsContract.Persenter, NewsA
 
     @Override
     public Observable<BaseObjectBean<NewsBean>> getNewsList(int page) {
-        return null;
+        return getmApi().loadNewsList(page);
     }
 }
