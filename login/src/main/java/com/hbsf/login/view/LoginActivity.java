@@ -63,10 +63,9 @@ public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> impl
     }
 
     @Override
-    public void loginFail(String msg) {
-        ToastUtils.showShort(getApplicationContext(), msg);
+    public void onError(String errMessage) {
+        super.onError(errMessage);
         passwordEdit.setText("");
     }
-
 
 }

@@ -1,20 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_previous"
+
+    <RelativeLayout
+        android:id="@+id/search_area"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="首页界面"
-        android:textSize="30sp"
-        android:textColor="#000000"
-        android:gravity="center">
-    </TextView>
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/top_bar_bg_clor">
+
+        <ImageView
+            android:id="@+id/top_bar_left_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/top_bar_left_img" />
 
 
-</LinearLayout>
+        <androidx.appcompat.widget.SearchView
+            android:layout_marginTop="5dp"
+            android:id="@+id/top_bar_search_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/top_bar_right_img"
+            android:layout_toEndOf="@+id/top_bar_left_img"
+            android:background="@xml/shape_search_view" />
+
+        <ImageView
+            android:id="@+id/top_bar_right_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/top_bar_right_img" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_area"
+        android:background="@color/top_bar_bg_clor"
+        app:tabSelectedTextColor="#656363"
+        app:tabTextColor="@color/bottom_bar_bg_clor" />
+
+
+    <com.hbsf.home.view.SFViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tab_layout"
+        android:background="@color/white" />
+
+</RelativeLayout>

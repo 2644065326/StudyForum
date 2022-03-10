@@ -4,7 +4,7 @@ import com.hbsf.base.api.IBaseModel;
 import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.bean.BaseObjectBean;
 
-public abstract class BaseModel<T, P extends IBasePresenter, A> implements IBaseModel<T>{
+public abstract class BaseModel<P extends IBasePresenter, A> implements IBaseModel{
     private P mPresenter;
     private A mApi;
 

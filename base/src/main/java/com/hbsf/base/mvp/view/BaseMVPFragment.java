@@ -4,8 +4,9 @@ import androidx.lifecycle.Lifecycle;
 
 import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.utils.DialogUtils;
+import com.hbsf.base.utils.ToastUtils;
 import com.hbsf.base.view.BaseFragment;
-import com.hbsf.base.mvp.presenter.BasePresenter;
+
 
 import autodispose2.AutoDispose;
 import autodispose2.AutoDisposeConverter;
@@ -48,6 +49,6 @@ public abstract class BaseMVPFragment<T extends IBasePresenter> extends BaseFrag
 
     @Override
     public void onError(String errMessage) {
-
+        ToastUtils.showShort(getContext(), errMessage);
     }
 }

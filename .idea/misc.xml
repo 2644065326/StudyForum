@@ -7,10 +7,17 @@
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/bottom_item.xml" value="0.22037037037037038" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_community.xml" value="0.1458966565349544" />
-        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_news.xml" value="0.13541666666666666" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_higher.xml" value="0.13541666666666666" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_news.xml" value="0.335" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_news_channel.xml" value="0.1640625" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_one.xml" value="0.15670289855072464" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_personal.xml" value="0.1609375" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_three.xml" value="0.15670289855072464" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_two.xml" value="0.15670289855072464" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_work.xml" value="0.13541666666666666" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/top_bar_item.xml" value="0.13541666666666666" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/top_search_area.xml" value="0.1640625" />
+        <entry key="..\:/androidProjects/StudyForum/home/src/main/res/xml/shape_search_view.xml" value="0.1609375" />
         <entry key="..\:/androidProjects/StudyForum/login/src/main/res/layout/activity_login.xml" value="0.16041666666666668" />
         <entry key="..\:/androidProjects/StudyForum/login/src/main/res/layout/activity_register.xml" value="0.17028985507246377" />
       </map>

@@ -30,7 +30,12 @@ public class BaseObserver<T extends BaseObjectBean, V extends IBaseMVPView, M ex
     @Override
     public void onNext(@NonNull T t) {
         if (mModel == null) return;
-        mModel.handleResult(t);
+        if (t != null && t.getErrorCode() == 1) {
+            mModel.handleResult(t);
+        } else {
+            mView.onError(t.getErrorMsg());
+        }
+
     }
 
     @Override

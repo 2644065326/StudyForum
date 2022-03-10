@@ -11,7 +11,7 @@ import com.hbsf.login.presenter.LoginPresenter;
 
 import io.reactivex.rxjava3.core.Observable;
 
-public class LoginModel extends BaseModel<LoginBean, LoginContract.Persenter, LoginApi> implements LoginContract.Model {
+public class LoginModel extends BaseModel<LoginContract.Persenter, LoginApi> implements LoginContract.Model {
 
 
     public LoginModel(LoginContract.Persenter loginPresenter) {
@@ -32,9 +32,6 @@ public class LoginModel extends BaseModel<LoginBean, LoginContract.Persenter, Lo
 
     }
 
-    private void loginFail(String errorMsg) {
-        getPresenter().loginFail(errorMsg);
-    }
 
     private void updataUserInfo(LoginBean bean) {
         if (bean == null) {
@@ -51,11 +48,8 @@ public class LoginModel extends BaseModel<LoginBean, LoginContract.Persenter, Lo
 
 
     @Override
-    public void handleResult(BaseObjectBean<LoginBean> t) {
-        if (t.getErrorCode() != 1) {
-            loginFail(t.getErrorMsg());
-        } else {
-            loginSuccess(t.getResult());
-        }
+    public void handleResult(BaseObjectBean t) {
+        if (t.getErrorCode() != 1) return;
+        loginSuccess((LoginBean) t.getResult());
     }
 }

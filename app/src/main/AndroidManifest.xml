@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".MainApplication"
-        android:theme="@style/Theme.StudyForum">
+        android:theme="@style/Theme.Design.NoActionBar">
         <activity
             android:name="com.hbsf.login.view.LoginActivity"
             android:exported="true">

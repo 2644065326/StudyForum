@@ -42,11 +42,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
         mView.loginSuccess();
     }
 
-    @Override
-    public void loginFail(String msg) {
-        mView.loginFail(msg);
-    }
-
 
     @Override
     public LoginContract.Model getModel() {

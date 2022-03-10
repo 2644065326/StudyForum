@@ -25,14 +25,13 @@ import java.util.List;
 
 @ARouter(path = "/home/HomeActivity")
 public class HomeActivity extends BaseActivity {
-    private ViewPager viewPager;
+    private SFViewPager viewPager;
     private FragmentManager fragmentManager;
     private LinearLayout mBtnNews;
     private LinearLayout mBtnCommunity;
     private LinearLayout mBtnPersonal;
     private List<LinearLayout> bottomBtnlist;
     private int currentFragment;
-
 
 
     @Override
@@ -71,8 +70,8 @@ public class HomeActivity extends BaseActivity {
         viewPager = findViewById(R.id.fragment_view_pager);
         fragmentManager = getSupportFragmentManager();
 
-
-
+        viewPager.setCanScroll(false);
+        viewPager.setOffscreenPageLimit(2);
         //设置viewPager的Adapter，得到当前的Fragment页面
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @NonNull
@@ -144,19 +143,19 @@ public class HomeActivity extends BaseActivity {
         mBtnNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(0);
+                viewPager.setCurrentItem(0, false);
             }
         });
         mBtnCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(1, false);
             }
         });
         mBtnPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(2, false);
             }
         });
     }

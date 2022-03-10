@@ -7,8 +7,9 @@ import androidx.lifecycle.Lifecycle;
 
 import com.hbsf.base.api.IBasePresenter;
 import com.hbsf.base.utils.DialogUtils;
+import com.hbsf.base.utils.ToastUtils;
 import com.hbsf.base.view.BaseActivity;
-import com.hbsf.base.mvp.presenter.BasePresenter;
+
 
 
 import autodispose2.AutoDispose;
@@ -58,6 +59,6 @@ public abstract class BaseMVPActivity<T extends IBasePresenter> extends BaseActi
 
     @Override
     public void onError(String errMessage) {
-
+        ToastUtils.showShort(this, errMessage);
     }
 }

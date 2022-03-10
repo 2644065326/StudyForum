@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface LoginApi {
 
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("studyforum/login")
     Observable<BaseObjectBean<LoginBean>> login(@Field("username") String username,
                                                 @Field("password") String password);
 
