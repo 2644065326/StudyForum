@@ -11,17 +11,17 @@ import com.hbsf.login.presenter.LoginPresenter;
 
 import io.reactivex.rxjava3.core.Observable;
 
-public class LoginModel extends BaseModel<LoginBean, LoginContract.Persenter> implements LoginContract.Model {
-    private LoginApi loginApi;
+public class LoginModel extends BaseModel<LoginBean, LoginContract.Persenter, LoginApi> implements LoginContract.Model {
+
 
     public LoginModel(LoginContract.Persenter loginPresenter) {
         super(loginPresenter);
-        loginApi = RetrofitClient.getInstance().create(LoginApi.class);
+        setmApi(RetrofitClient.getInstance().create(LoginApi.class));
     }
 
     @Override
     public Observable<BaseObjectBean<LoginBean>> login(String username, String password) {
-        return loginApi.login(username,password);
+        return getmApi().login(username,password);
     }
 
 
