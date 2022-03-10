@@ -2,6 +2,7 @@ package com.hbsf.base.mvp.view;
 
 import androidx.lifecycle.Lifecycle;
 
+import com.hbsf.base.utils.DialogUtils;
 import com.hbsf.base.view.BaseFragment;
 import com.hbsf.base.mvp.presenter.BasePresenter;
 
@@ -32,5 +33,20 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends BaseFragm
     public <T> AutoDisposeConverter<T> bindAutoDispose() {
         return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
                 .from(this, Lifecycle.Event.ON_DESTROY));
+    }
+
+    @Override
+    public void showLoading() {
+        DialogUtils.showDialog(getContext());
+    }
+
+    @Override
+    public void hideLoading() {
+        DialogUtils.closeDialog();
+    }
+
+    @Override
+    public void onError(String errMessage) {
+
     }
 }

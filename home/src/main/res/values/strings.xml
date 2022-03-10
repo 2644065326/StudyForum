@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Home</string>
+    <string name="bottom_news_text">动态</string>
+    <string name="bottom_community_text">社区</string>
+    <string name="bottom_personal_text">我的</string>
 </resources>
