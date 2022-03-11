@@ -12,6 +12,16 @@ public class NewsListBean {
 
     private List<NewsBean> list;
 
+    private String page;
+
+    public String getPage() {
+        return page;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
+    }
+
     public List<NewsBean> getList() {
         return list;
     }

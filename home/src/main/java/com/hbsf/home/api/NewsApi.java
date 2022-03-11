@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface NewsApi {
 
-    @FormUrlEncoded
+    //@FormUrlEncoded
     @GET("studyforum/news")
     Observable<BaseObjectBean<NewsListBean>> loadNewsList(@Query("channelId") String channelId,
                                                          @Query("channelName") String channelName,

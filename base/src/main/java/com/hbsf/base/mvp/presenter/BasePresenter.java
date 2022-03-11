@@ -9,11 +9,16 @@ public abstract class BasePresenter<V extends IBaseMVPView, M extends IBaseModel
     protected V mView;
     protected M mModel;
 
-    public BasePresenter(V view) {
+    public BasePresenter(V view, boolean isAutoBindModel) {
         attachView(view);
-        mModel = getModel();
+        if (isAutoBindModel) {
+            mModel = getModel();
+        }
     }
 
+    public BasePresenter(V view) {
+        this(view, true);
+    }
     public void attachModel(M model) {
         this.mModel = model;
     }

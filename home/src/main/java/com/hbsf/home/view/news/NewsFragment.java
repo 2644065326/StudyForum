@@ -9,7 +9,7 @@ import com.hbsf.base.mvp.view.BaseMVPFragment;
 import com.hbsf.home.R;
 import com.hbsf.home.api.NewsChannlesContract;
 import com.hbsf.home.bean.NewsChannelsListBean;
-import com.hbsf.home.presenter.NewsPresenter;
+import com.hbsf.home.presenter.NewsChannelsPresenter;
 import com.hbsf.home.view.SFViewPager;
 import com.hbsf.home.view.news.fragmentadapter.NewsFragmentAdapter;
 
@@ -20,11 +20,12 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
     private SFViewPager viewPager;
     private NewsFragmentAdapter adapter;
 
+
     @Override
     protected void initView(View view) {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
-        mPresenter = new NewsPresenter(this);
+        mPresenter = new NewsChannelsPresenter(this);
         adapter = new NewsFragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mPresenter.loadNewsChannelList();
     }
@@ -46,7 +47,6 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
             adapter.getTabsID().add(bean.getChannelId());
             adapter.getTabsName().add(bean.getName());
         }
-
         viewPager.setAdapter(adapter);
         //设置TabLayout和ViewPager联动
         tabLayout.setupWithViewPager(viewPager,false);
@@ -57,5 +57,15 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
     public void onError(String errMessage) {
         super.onError(errMessage);
         mPresenter.loadCacheChannels();
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }
