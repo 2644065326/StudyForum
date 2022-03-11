@@ -6,6 +6,7 @@ import com.hbsf.base.application.BaseApplication;
 import com.hbsf.base.bean.BaseObjectBean;
 import com.hbsf.base.model.BaseModel;
 import com.hbsf.base.utils.SPUtils;
+import com.hbsf.base.utils.StringUtils;
 import com.hbsf.common.net.RetrofitClient;
 import com.hbsf.home.api.NewsApi;
 import com.hbsf.home.api.NewsListContract;
@@ -70,7 +71,8 @@ public class NewsModel extends BaseModel<NewsListContract.Persenter, NewsApi> im
         if (!isFirstLoad) return;
         isFirstLoad = false;
         //加载缓存
-        String str = (String) SPUtils.get(BaseApplication.sApplication, cacheKey, " ");
+        String str = (String) SPUtils.get(BaseApplication.sApplication, cacheKey, "");
+        if (StringUtils.isEmpty(str)) return;
         NewsListBean savedData = new Gson().fromJson(str, new TypeToken<NewsListBean>() {}.getType());
         dataList.addAll(savedData.getList());
         getPresenter().showNews(dataList);
