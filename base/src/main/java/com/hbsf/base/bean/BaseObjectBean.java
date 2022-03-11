@@ -1,5 +1,7 @@
 package com.hbsf.base.bean;
 
+import com.hbsf.base.api.IBaseBean;
+
 public class BaseObjectBean<T> {
 
     /**

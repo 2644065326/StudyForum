@@ -1,5 +1,7 @@
 package com.hbsf.base.bean;
 
+import com.hbsf.base.api.IBaseBean;
+
 import java.util.List;
 
 public class BaseArrayBean<T> {

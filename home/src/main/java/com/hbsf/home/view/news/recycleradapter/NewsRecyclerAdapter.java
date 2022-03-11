@@ -13,12 +13,17 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.hbsf.base.api.IBaseModel;
+import com.hbsf.base.view.BaseViewHolder;
 import com.hbsf.home.R;
 import com.hbsf.home.bean.NewsListBean;
+import com.hbsf.home.view.news.itemview.MorePictureItemView;
+import com.hbsf.home.view.news.itemview.PictureItemView;
+import com.hbsf.home.view.news.itemview.TitleItemView;
 
 import java.util.List;
 
-public class NewsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private Context mContext;
     private List<NewsListBean.NewsBean> mItems;
 
@@ -81,103 +86,23 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return -1;
     }
 
-    private class PictureTitleViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleTextView;
-        public AppCompatImageView picutureImageView;
 
-        public PictureTitleViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleTextView = itemView.findViewById(R.id.news_pic_title);
-            picutureImageView = itemView.findViewById(R.id.news_pic_img);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                }
-            });
-        }
-    }
-
-    private class MorePictureTitleViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleTextView;
-        public AppCompatImageView leftImageView;
-        public AppCompatImageView midImageView;
-        public AppCompatImageView rightImageView;
-        public MorePictureTitleViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleTextView = itemView.findViewById(R.id.more_pic_title);
-            leftImageView = itemView.findViewById(R.id.more_pic_left_img);
-            midImageView = itemView.findViewById(R.id.more_pic_mid_img);
-            rightImageView = itemView.findViewById(R.id.more_pic_right_img);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-    }
-
-    private class TitleViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleTextView;
-
-        public TitleViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titleTextView = itemView.findViewById(R.id.news_txt_title);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-    }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        //holder.itemView.setTag(mItems.get(position).link);
-        if(holder instanceof PictureTitleViewHolder){
-            ((PictureTitleViewHolder) holder).titleTextView.setText(mItems.get(position).getTitle());
-            Glide.with(holder.itemView.getContext())
-            .load(R.drawable.test)
-                    //.load(mItems.get(position).getImageurls().get(0))
-                    .transition(withCrossFade())
-                    .into(((PictureTitleViewHolder) holder).picutureImageView);
-        } else if(holder instanceof TitleViewHolder) {
-            ((TitleViewHolder) holder).titleTextView.setText(mItems.get(position).getTitle());
-        } else if (holder instanceof MorePictureTitleViewHolder) {
-            ((MorePictureTitleViewHolder) holder).titleTextView.setText(mItems.get(position).getTitle());
-            Glide.with(holder.itemView.getContext())
-                    .load(R.drawable.test)
-                    //.load(mItems.get(position).getImageurls().get(0))
-                    .transition(withCrossFade())
-                    .into(((MorePictureTitleViewHolder) holder).leftImageView);
-            Glide.with(holder.itemView.getContext())
-                    .load(R.drawable.test)
-                    //.load(mItems.get(position).getImageurls().get(1))
-                    .transition(withCrossFade())
-                    .into(((MorePictureTitleViewHolder) holder).midImageView);
-            Glide.with(holder.itemView.getContext())
-                    .load(R.drawable.test)
-                    //.load(mItems.get(position).getImageurls().get(2))
-                    .transition(withCrossFade())
-                    .into(((MorePictureTitleViewHolder) holder).rightImageView);
-        }
-    }
-
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_PICTURE_TITLE) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.new_picture_item, parent, false);
-            return new PictureTitleViewHolder(view);
+            return new BaseViewHolder(new PictureItemView(parent.getContext()));
         } else if (viewType == VIEW_TYPE_TITLE) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.new_text_item, parent, false);
-            return new TitleViewHolder(view);
+            return new BaseViewHolder(new TitleItemView(parent.getContext()));
         } else if (viewType == VIEW_TYPE_MORE_PICTURE_TITLE) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.new_more_pic_item, parent, false);
-            return new MorePictureTitleViewHolder(view);
+            return new BaseViewHolder(new MorePictureItemView(parent.getContext()));
         }
         return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+        holder.bind(mItems.get(position));
     }
 }

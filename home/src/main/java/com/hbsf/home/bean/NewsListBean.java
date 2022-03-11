@@ -1,5 +1,7 @@
 package com.hbsf.home.bean;
 
+import com.hbsf.base.api.IBaseBean;
+
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ public class NewsListBean {
         return new NewsListBean.NewsBean(title, channelName, imageurls, desc, channelId, type);
     }
 
-    public class NewsBean {
+    public class NewsBean implements IBaseBean {
         private String title;
 
         private String channelName;

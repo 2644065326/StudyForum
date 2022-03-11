@@ -28,7 +28,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/news_pic_title"
+            android:id="@+id/news_txt_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
