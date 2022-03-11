@@ -17,6 +17,9 @@ public class NewsListBean {
     public void setList(List<NewsBean> list) {
         this.list = list;
     }
+    public NewsBean creatNewsBean(String title, String channelName, List<String> imageurls, String desc, String channelId, String type) {
+        return new NewsListBean.NewsBean(title, channelName, imageurls, desc, channelId, type);
+    }
 
     public class NewsBean {
         private String title;
@@ -29,12 +32,24 @@ public class NewsListBean {
 
         private String channelId;
 
-        public NewsBean(String title, String channelName, List<String> imageurls, String desc, String channelId) {
+        private String type;
+
+
+        public NewsBean(String title, String channelName, List<String> imageurls, String desc, String channelId, String type) {
             this.title = title;
             this.channelName = channelName;
             this.imageurls = imageurls;
             this.desc = desc;
             this.channelId = channelId;
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
 
         public String getTitle() {

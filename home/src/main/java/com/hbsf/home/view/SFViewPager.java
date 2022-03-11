@@ -18,11 +18,11 @@ public class SFViewPager extends ViewPager {
         super(context, attrs);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        if (isCanScroll) return super.onTouchEvent(ev);
-        else return isCanScroll;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent ev) {
+//        if (isCanScroll) return super.onTouchEvent(ev);
+//        else return isCanScroll;
+//    }
 
     public boolean isScroll() {
         return isCanScroll;
@@ -34,7 +34,7 @@ public class SFViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent arg0) {
-        if (isCanScroll) {
+        if (!isCanScroll) {
             return false;
         } else {
             return super.onInterceptTouchEvent(arg0);

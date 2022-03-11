@@ -1,9 +1,8 @@
-package com.hbsf.home.view.fragment;
+package com.hbsf.home.view.news;
 
 import android.view.View;
 
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.hbsf.base.mvp.view.BaseMVPFragment;
@@ -12,22 +11,21 @@ import com.hbsf.home.api.NewsChannlesContract;
 import com.hbsf.home.bean.NewsChannelsListBean;
 import com.hbsf.home.presenter.NewsPresenter;
 import com.hbsf.home.view.SFViewPager;
-import com.hbsf.home.view.fragmentadapter.NewsChannelFragmentAdapter;
+import com.hbsf.home.view.news.fragmentadapter.NewsFragmentAdapter;
 
 import java.util.List;
 
 public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter> implements NewsChannlesContract.View {
     private TabLayout tabLayout;
     private SFViewPager viewPager;
-    private NewsChannelFragmentAdapter adapter;
-
+    private NewsFragmentAdapter adapter;
 
     @Override
     protected void initView(View view) {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
         mPresenter = new NewsPresenter(this);
-        adapter = new NewsChannelFragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        adapter = new NewsFragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mPresenter.loadNewsChannelList();
     }
 

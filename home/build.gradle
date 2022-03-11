@@ -48,4 +48,5 @@ dependencies {
     implementation project(":common")
     implementation project(":arouter:arouter_annotation")
     annotationProcessor project(':arouter:arouter_compiler')
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
 }

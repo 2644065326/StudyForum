@@ -1,4 +1,4 @@
-package com.hbsf.home.view.fragmentadapter;
+package com.hbsf.home.view.news.fragmentadapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,12 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsChannelFragmentAdapter  extends FragmentPagerAdapter {
+public class NewsFragmentAdapter extends FragmentPagerAdapter {
     private List<String> tabsID;
     private List<String> tabsName;
     private List<Fragment> tabFragmentList;
 
-    public NewsChannelFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
+    public NewsFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
         tabsID = new ArrayList<>();
         tabsName = new ArrayList<>();

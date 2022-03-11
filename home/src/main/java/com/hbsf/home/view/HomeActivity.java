@@ -17,7 +17,7 @@ import com.hbsf.arouter_annotation.ARouter;
 import com.hbsf.base.view.BaseActivity;
 import com.hbsf.home.R;
 import com.hbsf.home.view.fragment.CommunityFragment;
-import com.hbsf.home.view.fragment.NewsFragment;
+import com.hbsf.home.view.news.NewsFragment;
 import com.hbsf.home.view.fragment.PersonalFragment;
 
 import java.util.ArrayList;
