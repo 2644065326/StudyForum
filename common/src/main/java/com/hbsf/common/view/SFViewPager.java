@@ -1,4 +1,4 @@
-package com.hbsf.home.view;
+package com.hbsf.common.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -18,11 +18,11 @@ public class SFViewPager extends ViewPager {
         super(context, attrs);
     }
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent ev) {
-//        if (isCanScroll) return super.onTouchEvent(ev);
-//        else return isCanScroll;
-//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        if (isCanScroll) return super.onTouchEvent(ev);
+        else return isCanScroll;
+    }
 
     public boolean isScroll() {
         return isCanScroll;

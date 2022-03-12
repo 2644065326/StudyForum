@@ -12,5 +12,6 @@
     <color name="bottom_item_select_color">#FF000000</color>
     <color name="select_color">#bee6fe</color>
     <color name="top_bar_bg_clor">#FF92D6F4</color>
+    <color name="personal_bg_color">#FFF6F5F5</color>
 
 </resources>

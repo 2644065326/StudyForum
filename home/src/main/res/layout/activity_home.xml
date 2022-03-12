@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".view.HomeActivity"
     android:orientation="vertical">
-    <com.hbsf.home.view.SFViewPager
+    <com.hbsf.common.view.SFViewPager
         android:id="@+id/fragment_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linear">
 
-    </com.hbsf.home.view.SFViewPager>
+    </com.hbsf.common.view.SFViewPager>
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"

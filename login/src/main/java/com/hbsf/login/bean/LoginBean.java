@@ -20,7 +20,21 @@ public class LoginBean {
     private String password;
     private int type;
     private String username;
-    private List<?> collectIds;
+    private String desc;
+
+    public LoginBean(String icon, String username, String desc) {
+        this.icon = icon;
+        this.username = username;
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     public String getEmail() {
         return email;
@@ -70,11 +84,6 @@ public class LoginBean {
         this.username = username;
     }
 
-    public List<?> getCollectIds() {
-        return collectIds;
-    }
 
-    public void setCollectIds(List<?> collectIds) {
-        this.collectIds = collectIds;
-    }
+
 }

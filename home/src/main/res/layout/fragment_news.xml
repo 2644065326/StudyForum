@@ -55,7 +55,7 @@
         app:tabTextColor="@color/bottom_bar_bg_clor" />
 
 
-    <com.hbsf.home.view.SFViewPager
+    <com.hbsf.common.view.SFViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

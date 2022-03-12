@@ -10,7 +10,7 @@ import com.hbsf.home.R;
 import com.hbsf.home.api.NewsChannlesContract;
 import com.hbsf.home.bean.NewsChannelsListBean;
 import com.hbsf.home.presenter.NewsChannelsPresenter;
-import com.hbsf.home.view.SFViewPager;
+import com.hbsf.common.view.SFViewPager;
 import com.hbsf.home.view.news.fragmentadapter.NewsFragmentAdapter;
 
 import java.util.List;
@@ -19,7 +19,6 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
     private TabLayout tabLayout;
     private SFViewPager viewPager;
     private NewsFragmentAdapter adapter;
-
 
     @Override
     protected void initView(View view) {

@@ -23,6 +23,7 @@
       <module name="StudyForum.arouter.arouter_api" target="11" />
       <module name="StudyForum.base" target="11" />
       <module name="StudyForum.common" target="11" />
+      <module name="StudyForum.detail" target="11" />
       <module name="StudyForum.home" target="11" />
       <module name="StudyForum.login" target="11" />
     </bytecodeTargetLevel>

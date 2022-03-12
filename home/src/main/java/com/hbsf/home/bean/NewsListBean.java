@@ -29,11 +29,11 @@ public class NewsListBean {
     public void setList(List<NewsBean> list) {
         this.list = list;
     }
-    public NewsBean creatNewsBean(String title, String channelName, List<String> imageurls, String desc, String channelId, String type) {
-        return new NewsListBean.NewsBean(title, channelName, imageurls, desc, channelId, type);
-    }
 
     public class NewsBean implements IBaseBean {
+
+        private String newsId;
+
         private String title;
 
         private String channelName;
@@ -46,14 +46,12 @@ public class NewsListBean {
 
         private String type;
 
+        public String getNewsId() {
+            return newsId;
+        }
 
-        public NewsBean(String title, String channelName, List<String> imageurls, String desc, String channelId, String type) {
-            this.title = title;
-            this.channelName = channelName;
-            this.imageurls = imageurls;
-            this.desc = desc;
-            this.channelId = channelId;
-            this.type = type;
+        public void setNewsId(String newsId) {
+            this.newsId = newsId;
         }
 
         public String getType() {

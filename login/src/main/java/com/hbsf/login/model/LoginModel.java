@@ -43,13 +43,13 @@ public class LoginModel extends BaseModel<LoginContract.Persenter, LoginApi> imp
         String password = bean.getPassword();
         int type = bean.getType();
         String username = bean.getUsername();
-        UserUtils.updataUserInfo(email,icon, id, password, type, username);
+        String desc = bean.getDesc();
+        UserUtils.updataUserInfo(email,icon, id, password, type, username, desc);
     }
 
 
     @Override
     public void handleResult(BaseObjectBean t) {
-        if (t.getErrorCode() != 1) return;
         loginSuccess((LoginBean) t.getResult());
     }
 }

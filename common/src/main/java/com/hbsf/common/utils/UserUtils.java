@@ -13,11 +13,19 @@ public class UserUtils {
     private String password;
     private int type;
     private String username;
+    private String desc;
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     private static volatile UserUtils instance;
 
-    private static UserUtils getInstance() {
+    public static UserUtils getInstance() {
         if (instance == null) {
             synchronized (UserUtils.class) {
                 if (instance == null) {
@@ -28,7 +36,7 @@ public class UserUtils {
         return instance;
     }
 
-    public static void updataUserInfo(String email, String icon, String id, String password, int type, String username) {
+    public static void updataUserInfo(String email, String icon, String id, String password, int type, String username, String desc) {
         if (UserUtils.getInstance() == null) {
             return;
         }
@@ -38,6 +46,7 @@ public class UserUtils {
         instance.password = password;
         instance.type = type;
         instance.username = username;
+        instance.desc = desc;
     }
 
 
