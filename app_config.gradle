@@ -5,7 +5,8 @@ ext {
             app : "com.hbsf.app",
             login : "com.hbsf.login",
             home : "com.hbsf.home",
-            detail : "com.hbsf.detail"
+            detail : "com.hbsf.detail",
+            posts : "com.hbsf.posts"
     ];
     app_android = [
             compileSdk : 31,
@@ -21,7 +22,8 @@ ext {
     app_appid = [
             "login" : "com.hbsf.login",
             "home" : "com.hbsf.home",
-            "detail" : "com.hbsf.detail"
+            "detail" : "com.hbsf.detail",
+            "posts" : "com.hbsf.posts"
     ]
 
     dependencies_version = [

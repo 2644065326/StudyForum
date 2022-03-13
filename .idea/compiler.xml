@@ -26,6 +26,9 @@
       <module name="StudyForum.detail" target="11" />
       <module name="StudyForum.home" target="11" />
       <module name="StudyForum.login" target="11" />
+      <module name="StudyForum.posts" target="11" />
+      <module name="StudyForum.posts.photoselect" target="11" />
+      <module name="StudyForum.posts.pictureselect" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

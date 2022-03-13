@@ -36,6 +36,12 @@
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/xml/shape_search_view.xml" value="0.1609375" />
         <entry key="..\:/androidProjects/StudyForum/login/src/main/res/layout/activity_login.xml" value="0.16041666666666668" />
         <entry key="..\:/androidProjects/StudyForum/login/src/main/res/layout/activity_register.xml" value="0.17028985507246377" />
+        <entry key="..\:/androidProjects/StudyForum/posts/pictureselect/src/main/res/layout/bga_pp_item_nine_photo.xml" value="0.15572916666666667" />
+        <entry key="..\:/androidProjects/StudyForum/posts/src/main/res/drawable/selector_btn_orange.xml" value="0.12083333333333333" />
+        <entry key="..\:/androidProjects/StudyForum/posts/src/main/res/layout/activity_moment_add.xml" value="0.15572916666666667" />
+        <entry key="..\:/androidProjects/StudyForum/posts/src/main/res/layout/activity_moment_list.xml" value="0.15572916666666667" />
+        <entry key="..\:/androidProjects/StudyForum/posts/src/main/res/layout/activity_system_gallery_crop.xml" value="0.15572916666666667" />
+        <entry key="..\:/androidProjects/StudyForum/posts/src/main/res/layout/item_moment.xml" value="0.15572916666666667" />
       </map>
     </option>
   </component>

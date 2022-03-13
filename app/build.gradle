@@ -44,6 +44,7 @@ dependencies {
         implementation project(":login")
         implementation project(":home")
         implementation project(":detail")
+        implementation project(":posts")
     }
     implementation project(":common")
 

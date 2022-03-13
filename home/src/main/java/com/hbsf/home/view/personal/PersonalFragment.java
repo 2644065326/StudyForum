@@ -93,7 +93,7 @@ public class PersonalFragment extends BaseMVPFragment implements View.OnClickLis
         }
 
         RouterManager.getInstance()
-                .build("/detail/PersonalDetailsActivity")
+                .build("/posts/MomentListActivity")
                 .withString("userId", "11111")
                 .withString("type", type)
                 .navigation(getContext());

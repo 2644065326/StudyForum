@@ -50,15 +50,5 @@ dependencies {
     annotationProcessor project(':arouter:arouter_compiler')
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
-    // PictureSelector basic (Necessary)
-    implementation 'io.github.lucksiege:pictureselector:v3.0.5'
 
-    // image compress library (Not necessary)
-    implementation 'io.github.lucksiege:compress:v3.0.5'
-
-    // uCrop library (Not necessary)
-    implementation 'io.github.lucksiege:ucrop:v3.0.5'
-
-    // simple camerax library (Not necessary)
-    implementation 'io.github.lucksiege:camerax:v3.0.5'
 }
