@@ -4,6 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/androidProjects/StudyForum/app/src/main/res/layout/activity_main.xml" value="0.16041666666666668" />
+        <entry key="..\:/androidProjects/StudyForum/common/src/main/res/drawable/selector_btn_orange.xml" value="0.1703125" />
+        <entry key="..\:/androidProjects/StudyForum/common/src/main/res/layout/bga_pp_item_nine_photo.xml" value="0.10885416666666667" />
+        <entry key="..\:/androidProjects/StudyForum/common/src/main/res/layout/bga_pp_item_photo_camera.xml" value="0.10885416666666667" />
+        <entry key="..\:/androidProjects/StudyForum/common/src/main/res/layout/bga_pp_item_photo_folder.xml" value="0.10885416666666667" />
+        <entry key="..\:/androidProjects/StudyForum/common/src/main/res/layout/bga_pp_item_photo_picker.xml" value="0.10885416666666667" />
+        <entry key="..\:/androidProjects/StudyForum/detail/src/main/res/layout/activity_issue.xml" value="0.20878623188405798" />
+        <entry key="..\:/androidProjects/StudyForum/detail/src/main/res/layout/activity_main.xml" value="0.20878623188405798" />
+        <entry key="..\:/androidProjects/StudyForum/detail/src/main/res/layout/activity_personal_detail.xml" value="0.20878623188405798" />
+        <entry key="..\:/androidProjects/StudyForum/detail/src/main/res/layout/activity_test.xml" value="0.20878623188405798" />
+        <entry key="..\:/androidProjects/StudyForum/detail/src/main/res/layout/item_personal_detail.xml" value="0.19791666666666666" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/bottom_item.xml" value="0.22037037037037038" />
         <entry key="..\:/androidProjects/StudyForum/home/src/main/res/layout/fragment_community.xml" value="0.1458966565349544" />

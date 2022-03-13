@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.hbsf.arouter_api.manager.RouterManager;
 import com.hbsf.base.mvp.view.BaseMVPFragment;
 import com.hbsf.common.utils.UserUtils;
 import com.hbsf.home.R;
@@ -82,12 +83,19 @@ public class PersonalFragment extends BaseMVPFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        String type = null;
         if (v.getId() == R.id.group) {
-
+            type = "group";
         } else if (v.getId() == R.id.posts) {
-
+            type = "posts";
         } else {
-
+            type = "collection";
         }
+
+        RouterManager.getInstance()
+                .build("/detail/PersonalDetailsActivity")
+                .withString("userId", "11111")
+                .withString("type", type)
+                .navigation(getContext());
     }
 }

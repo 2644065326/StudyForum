@@ -1,13 +1,15 @@
-
-apply plugin: 'com.android.library'
-
+if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
 
 android {
     compileSdk app_android.compileSdk
 
     defaultConfig {
         if (!isRelease) {
-            applicationId app_appid.home
+            applicationId app_appid.detail
         }
         minSdk app_android.minSdk
         targetSdk app_android.targetSdk
@@ -18,7 +20,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 // project.getName() == app
-                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.home]
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.detail]
             }
         }
     }
@@ -46,4 +48,17 @@ dependencies {
     implementation project(":common")
     implementation project(":arouter:arouter_annotation")
     annotationProcessor project(':arouter:arouter_compiler')
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    // PictureSelector basic (Necessary)
+    implementation 'io.github.lucksiege:pictureselector:v3.0.5'
+
+    // image compress library (Not necessary)
+    implementation 'io.github.lucksiege:compress:v3.0.5'
+
+    // uCrop library (Not necessary)
+    implementation 'io.github.lucksiege:ucrop:v3.0.5'
+
+    // simple camerax library (Not necessary)
+    implementation 'io.github.lucksiege:camerax:v3.0.5'
 }

@@ -4,7 +4,8 @@ ext {
     packageNameForAPT = [
             app : "com.hbsf.app",
             login : "com.hbsf.login",
-            home : "com.hbsf.home"
+            home : "com.hbsf.home",
+            detail : "com.hbsf.detail"
     ];
     app_android = [
             compileSdk : 31,
@@ -19,7 +20,8 @@ ext {
 
     app_appid = [
             "login" : "com.hbsf.login",
-            "home" : "com.hbsf.home"
+            "home" : "com.hbsf.home",
+            "detail" : "com.hbsf.detail"
     ]
 
     dependencies_version = [
