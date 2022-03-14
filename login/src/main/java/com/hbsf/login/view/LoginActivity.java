@@ -35,10 +35,6 @@ public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> impl
         nameEdit = findViewById(R.id.name_edit);
         passwordEdit = findViewById(R.id.password_edit);
         presenter = new LoginPresenter(this);
-        RouterManager.getInstance()
-                .build("/home/HomeActivity")
-                .withString("name", "home")
-                .navigation(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

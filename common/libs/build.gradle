@@ -1,0 +1,53 @@
+if (isRelease) { // 如果是发布版本时，各个模块都不能独立运行
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+android {
+    compileSdk app_android.compileSdk
+
+    defaultConfig {
+        if (!isRelease) {
+            applicationId app_appid.home
+        }
+        minSdk app_android.minSdk
+        targetSdk app_android.targetSdk
+        versionCode app_android.versionCode
+        versionName app_android.versionName
+
+        testInstrumentationRunner app_android.testInstrumentationRunner
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // project.getName() == app
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT.home]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation "androidx.appcompat:appcompat:${dependencies_version.appcompat}"
+    implementation "com.google.android.material:material:${dependencies_version.material}"
+    implementation "androidx.constraintlayout:constraintlayout:${dependencies_version.constraintlayout}"
+    testImplementation "junit:junit:${dependencies_version.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${dependencies_version.ext_junit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${dependencies_version.espresso_core}"
+    implementation project(":common")
+    implementation project(":arouter:arouter_annotation")
+    annotationProcessor project(':arouter:arouter_compiler')
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
+}
