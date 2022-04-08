@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.hbsf.base.mvp.view.BaseMVPFragment;
 
+import com.hbsf.home.api.NewsChannlesContract;
 import com.hbsf.home.api.NewsListContract;
 import com.hbsf.home.bean.NewsListBean;
 import com.hbsf.home.presenter.NewsPresenter;
@@ -33,12 +34,18 @@ public class NewsChannelFragment extends BaseMVPFragment<NewsListContract.Persen
     private NewsRecyclerAdapter recyclerAdapter;
     private String channelId;
     private String channelName;
+    private String channelType;
     private SmartRefreshLayout refreshLayout;
 
-    public static NewsChannelFragment newInstance(String channelId, String channelName) {
+    public static NewsChannelFragment newInstance(String channelId, String channelName, NewsChannlesContract.Type type) {
         Bundle args = new Bundle();
         args.putString("id", channelId);
         args.putString("name", channelName);
+        if (type == NewsChannlesContract.Type.NEWS) {
+            args.putString("type", "0");
+        } else {
+            args.putString("type", "1");
+        }
         NewsChannelFragment fragment = new NewsChannelFragment();
         fragment.setArguments(args);
         return fragment;
@@ -54,7 +61,8 @@ public class NewsChannelFragment extends BaseMVPFragment<NewsListContract.Persen
         recyclerView.setAdapter(recyclerAdapter);
         channelId = getArguments().getString("id");
         channelName = getArguments().getString("name");
-        mPresenter = new NewsPresenter(this, channelId, channelName);
+        channelType = getArguments().getString("type");
+        mPresenter = new NewsPresenter(this, channelId, channelName, channelType);
         mPresenter.loadNextPage(false);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -86,7 +94,12 @@ public class NewsChannelFragment extends BaseMVPFragment<NewsListContract.Persen
     @Override
     public void onError(String errMessage) {
         super.onError(errMessage);
-        mPresenter.loadCacheNews();
+        if (channelType.equals("0")) {
+            mPresenter.loadCacheNews();
+        } else {
+            refreshLayout.finishRefresh();
+            refreshLayout.finishLoadMore();
+        }
     }
 
     @Override

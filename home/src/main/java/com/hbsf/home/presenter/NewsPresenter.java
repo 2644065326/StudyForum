@@ -12,18 +12,19 @@ import java.util.List;
 public class NewsPresenter extends BasePresenter<NewsListContract.View, NewsListContract.Model> implements NewsListContract.Persenter {
     private String channelId;
     private String channelName;
-
-    public NewsPresenter(NewsListContract.View view, String channelId, String channelName) {
+    private String channelType;
+    public NewsPresenter(NewsListContract.View view, String channelId, String channelName, String channelType) {
         super(view, false);
         this.channelId = channelId;
         this.channelName = channelName;
+        this.channelType = channelType;
         mModel = getModel();
     }
 
 
     @Override
     public NewsListContract.Model getModel() {
-        return new NewsModel(this, channelId, channelName);
+        return new NewsModel(this, channelId, channelName, channelType);
     }
 
     @Override

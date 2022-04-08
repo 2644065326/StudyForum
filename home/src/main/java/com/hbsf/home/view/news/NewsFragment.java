@@ -24,9 +24,15 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
     protected void initView(View view) {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
-        mPresenter = new NewsChannelsPresenter(this);
+        viewPager.setOffscreenPageLimit(2);
+        mPresenter = getPresenter();
         adapter = new NewsFragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mPresenter.loadNewsChannelList();
+    }
+
+
+    public NewsChannlesContract.Persenter getPresenter() {
+        return new NewsChannelsPresenter(this, getType());
     }
 
     @Override
@@ -42,7 +48,7 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
         List<NewsChannelsListBean.ChannelBean> channelBeanList = channelsBean.getList();
         for (NewsChannelsListBean.ChannelBean bean : channelBeanList) {
             tabLayout.addTab(tabLayout.newTab().setText(bean.getName()));
-            adapter.getTabFragmentList().add(NewsChannelFragment.newInstance(bean.getChannelId(), bean.getName()));
+            adapter.getTabFragmentList().add(NewsChannelFragment.newInstance(bean.getChannelId(), bean.getName(), getType()));
             adapter.getTabsID().add(bean.getChannelId());
             adapter.getTabsName().add(bean.getName());
         }
@@ -50,6 +56,10 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
         //设置TabLayout和ViewPager联动
         tabLayout.setupWithViewPager(viewPager,false);
 
+    }
+
+    public NewsChannlesContract.Type getType() {
+        return  NewsChannlesContract.Type.NEWS;
     }
 
     @Override

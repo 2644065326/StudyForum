@@ -8,13 +8,16 @@ import com.hbsf.home.bean.NewsChannelsListBean;
 import com.hbsf.home.model.NewsChannelModel;
 
 public class NewsChannelsPresenter extends BasePresenter<NewsChannlesContract.View, NewsChannlesContract.Model> implements NewsChannlesContract.Persenter{
-    public NewsChannelsPresenter(NewsChannlesContract.View view) {
-        super(view);
+    private NewsChannlesContract.Type type;
+    public NewsChannelsPresenter(NewsChannlesContract.View view, NewsChannlesContract.Type type) {
+        super(view, false);
+        this.type = type;
+        mModel = getModel();
     }
 
     @Override
     public NewsChannlesContract.Model getModel() {
-        return new NewsChannelModel(this);
+        return new NewsChannelModel(this, type);
     }
 
 

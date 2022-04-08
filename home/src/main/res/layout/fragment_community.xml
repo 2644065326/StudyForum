@@ -2,19 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEB3B"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center">
-    <TextView
-        android:id="@+id/tv_middle"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="联系人界面"
-        android:textSize="30sp"
-        android:textColor="#000000"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_area"
+        android:background="@color/top_bar_bg_clor"
+        app:tabSelectedTextColor="#656363"
+        app:tabTextColor="@color/bottom_bar_bg_clor" />
 
-    </TextView>
+    <com.hbsf.common.view.SFViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tab_layout"
+        android:background="@color/white" />
 
 
 </LinearLayout>

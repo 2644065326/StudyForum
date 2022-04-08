@@ -35,6 +35,7 @@ public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> impl
         nameEdit = findViewById(R.id.name_edit);
         passwordEdit = findViewById(R.id.password_edit);
         presenter = new LoginPresenter(this);
+        loginSuccess();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +49,6 @@ public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> impl
             }
         });
     }
-
     @Override
     public void loginSuccess() {
         RouterManager.getInstance()

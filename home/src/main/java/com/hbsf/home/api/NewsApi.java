@@ -15,11 +15,14 @@ public interface NewsApi {
 
     //@FormUrlEncoded
     @GET("studyforum/news")
-    Observable<BaseObjectBean<NewsListBean>> loadNewsList(@Query("channelId") String channelId,
-                                                         @Query("channelName") String channelName,
-                                                         @Query("page") String page);
+    Observable<BaseObjectBean<NewsListBean>> loadNewsList(@Query("channelType") String channelType,
+                                                          @Query("channelId") String channelId,
+                                                          @Query("channelName") String channelName,
+                                                          @Query("page") String page);
 
     @GET("studyforum/channel")
-    Observable<BaseObjectBean<NewsChannelsListBean>> getNewsChannels();
+    Observable<BaseObjectBean<NewsChannelsListBean>> getNewsChannels(@Query("type") String channelType);
+
+
 
 }

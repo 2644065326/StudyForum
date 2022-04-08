@@ -41,6 +41,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${dependencies_version.appcompat}"
     implementation "com.google.android.material:material:${dependencies_version.material}"
     implementation "androidx.constraintlayout:constraintlayout:${dependencies_version.constraintlayout}"
+    implementation project(path: ':home')
     testImplementation "junit:junit:${dependencies_version.junit}"
     androidTestImplementation "androidx.test.ext:junit:${dependencies_version.ext_junit}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${dependencies_version.espresso_core}"

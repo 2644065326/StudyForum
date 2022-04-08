@@ -10,6 +10,10 @@ import com.hbsf.home.bean.NewsListBean;
 import io.reactivex.rxjava3.core.Observable;
 
 public interface NewsChannlesContract {
+    public enum Type {
+        NEWS,
+        COMMUNITY;
+    }
 
     interface Model extends IBaseModel {
         Observable<BaseObjectBean<NewsChannelsListBean>> loadNewsChannlesList();
