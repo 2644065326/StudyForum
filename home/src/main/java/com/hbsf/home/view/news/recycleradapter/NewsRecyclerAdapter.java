@@ -3,20 +3,13 @@ package com.hbsf.home.view.news.recycleradapter;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.hbsf.base.api.IBaseModel;
 import com.hbsf.base.view.BaseViewHolder;
-import com.hbsf.home.R;
-import com.hbsf.home.bean.NewsListBean;
+import com.hbsf.home.bean.NewsBean;
 import com.hbsf.home.view.news.itemview.MorePictureItemView;
 import com.hbsf.home.view.news.itemview.PictureItemView;
 import com.hbsf.home.view.news.itemview.TitleItemView;
@@ -25,7 +18,7 @@ import java.util.List;
 
 public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private Context mContext;
-    private List<NewsListBean.NewsBean> mItems;
+    private List<NewsBean> mItems;
 
     private final int VIEW_TYPE_TITLE = 0;
     private final int VIEW_TYPE_PICTURE_TITLE = 1;
@@ -37,7 +30,7 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         this.mContext = context;
     }
 
-    public void setData(List<NewsListBean.NewsBean> items) {
+    public void setData(List<NewsBean> items) {
         this.mItems = items;
         notifyDataSetChanged();
     }
@@ -54,11 +47,11 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     @Override
     public int getItemViewType(int position) {
         if (mItems == null) return -1;
-        NewsListBean.NewsBean data = mItems.get(position);
+        NewsBean data = mItems.get(position);
         return itemTypePolicy(data);
     }
 
-    private int itemTypePolicy(NewsListBean.NewsBean data) {
+    private int itemTypePolicy(NewsBean data) {
         if (data == null) return -1;
         if (data.getImageurls() == null) return VIEW_TYPE_TITLE;
         int type = Integer.parseInt(data.getType());

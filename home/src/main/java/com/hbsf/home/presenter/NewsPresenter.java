@@ -4,7 +4,7 @@ import com.hbsf.base.mvp.presenter.BasePresenter;
 import com.hbsf.base.rx.BaseObserver;
 import com.hbsf.common.rx.RxScheduler;
 import com.hbsf.home.api.NewsListContract;
-import com.hbsf.home.bean.NewsListBean;
+import com.hbsf.home.bean.NewsBean;
 import com.hbsf.home.model.NewsModel;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class NewsPresenter extends BasePresenter<NewsListContract.View, NewsList
     }
 
     @Override
-    public void showNews(List<NewsListBean.NewsBean> data) {
+    public void showNews(List<NewsBean> data) {
         mView.showNews(data);
     }
 

@@ -9,12 +9,11 @@ import com.hbsf.base.mvp.view.BaseMVPFragment;
 
 import com.hbsf.home.api.NewsChannlesContract;
 import com.hbsf.home.api.NewsListContract;
-import com.hbsf.home.bean.NewsListBean;
+import com.hbsf.home.bean.NewsBean;
 import com.hbsf.home.presenter.NewsPresenter;
 import com.hbsf.home.view.news.recycleradapter.NewsRecyclerAdapter;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +23,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -85,7 +83,7 @@ public class NewsChannelFragment extends BaseMVPFragment<NewsListContract.Persen
 
 
     @Override
-    public void showNews(List<NewsListBean.NewsBean> data) {
+    public void showNews(List<NewsBean> data) {
         recyclerAdapter.setData(data);
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadMore();

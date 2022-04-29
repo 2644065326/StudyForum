@@ -6,10 +6,9 @@ import android.widget.TextView;
 
 import com.hbsf.base.view.BaseItemView;
 import com.hbsf.home.R;
-import com.hbsf.home.bean.NewsListBean;
-import com.hbsf.home.view.news.recycleradapter.NewsRecyclerAdapter;
+import com.hbsf.home.bean.NewsBean;
 
-public class TitleItemView extends BaseItemView<NewsListBean.NewsBean> {
+public class TitleItemView extends BaseItemView<NewsBean> {
     public TextView titleTextView;
 
     public TitleItemView(Context context) {
@@ -17,7 +16,7 @@ public class TitleItemView extends BaseItemView<NewsListBean.NewsBean> {
     }
 
     @Override
-    public void setData(NewsListBean.NewsBean data) {
+    public void setData(NewsBean data) {
         titleTextView.setText(data.getTitle());
     }
 

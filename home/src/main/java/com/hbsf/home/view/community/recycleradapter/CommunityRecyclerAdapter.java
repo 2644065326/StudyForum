@@ -7,10 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hbsf.base.view.BaseViewHolder;
-import com.hbsf.home.bean.NewsListBean;
-import com.hbsf.home.view.news.itemview.MorePictureItemView;
-import com.hbsf.home.view.news.itemview.PictureItemView;
-import com.hbsf.home.view.news.itemview.TitleItemView;
 
 import java.util.List;
 
@@ -23,7 +19,7 @@ public class CommunityRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolde
     }
 
     public void setData(List items) {
-
+        mItems = items;
         notifyDataSetChanged();
     }
 

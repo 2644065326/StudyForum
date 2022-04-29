@@ -40,6 +40,7 @@ public class LoginActivity extends BaseMVPActivity<LoginContract.Persenter> impl
             public void onClick(View v) {
                 String userName = nameEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
+                loginSuccess();
                 if (StringUtils.isEmpty(userName) ||  StringUtils.isEmpty(password)) {
                     ToastUtils.showShort(getApplicationContext(), "账号和密码不能为空");
                 } else {

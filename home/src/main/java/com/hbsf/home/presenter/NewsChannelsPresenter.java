@@ -4,8 +4,10 @@ import com.hbsf.base.mvp.presenter.BasePresenter;
 import com.hbsf.base.rx.BaseObserver;
 import com.hbsf.common.rx.RxScheduler;
 import com.hbsf.home.api.NewsChannlesContract;
-import com.hbsf.home.bean.NewsChannelsListBean;
+import com.hbsf.home.bean.ChannelBean;
 import com.hbsf.home.model.NewsChannelModel;
+
+import java.util.List;
 
 public class NewsChannelsPresenter extends BasePresenter<NewsChannlesContract.View, NewsChannlesContract.Model> implements NewsChannlesContract.Persenter{
     private NewsChannlesContract.Type type;
@@ -35,7 +37,7 @@ public class NewsChannelsPresenter extends BasePresenter<NewsChannlesContract.Vi
     }
 
     @Override
-    public void changeChannels(NewsChannelsListBean listBean) {
+    public void changeChannels(List<ChannelBean> listBean) {
         mView.creatChannels(listBean);
     }
 

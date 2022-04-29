@@ -1,18 +1,8 @@
 package com.hbsf.base.bean;
 
-
-public class BaseObjectBean<T> extends BaseBean {
-
-    /**
-     * status : 1
-     * msg : 获取成功
-     * result : {} 对象
-     */
-
+public class BaseBean {
     private int errorCode;
     private String errorMsg;
-    private T result;
-
     public int getErrorCode() {
         return errorCode;
     }
@@ -28,14 +18,5 @@ public class BaseObjectBean<T> extends BaseBean {
     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
-
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
-    }
-
 
 }

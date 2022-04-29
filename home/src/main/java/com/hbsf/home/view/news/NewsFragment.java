@@ -8,7 +8,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.hbsf.base.mvp.view.BaseMVPFragment;
 import com.hbsf.home.R;
 import com.hbsf.home.api.NewsChannlesContract;
-import com.hbsf.home.bean.NewsChannelsListBean;
+import com.hbsf.home.bean.ChannelBean;
 import com.hbsf.home.presenter.NewsChannelsPresenter;
 import com.hbsf.common.view.SFViewPager;
 import com.hbsf.home.view.news.fragmentadapter.NewsFragmentAdapter;
@@ -43,10 +43,9 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
 
 
     @Override
-    public void creatChannels(NewsChannelsListBean channelsBean) {
+    public void creatChannels(List<ChannelBean> channelBeanList) {
         //添加tab
-        List<NewsChannelsListBean.ChannelBean> channelBeanList = channelsBean.getList();
-        for (NewsChannelsListBean.ChannelBean bean : channelBeanList) {
+        for (ChannelBean bean : channelBeanList) {
             tabLayout.addTab(tabLayout.newTab().setText(bean.getName()));
             adapter.getTabFragmentList().add(NewsChannelFragment.newInstance(bean.getChannelId(), bean.getName(), getType()));
             adapter.getTabsID().add(bean.getChannelId());

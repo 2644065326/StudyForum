@@ -55,8 +55,6 @@ public abstract class BaseItemView<T extends IBaseBean> extends LinearLayout imp
 
     public abstract void onRootClicked(View view);
 
-
-
     
 }
 

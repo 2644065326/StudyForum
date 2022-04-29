@@ -1,5 +1,6 @@
 package com.hbsf.login.model;
 
+import com.hbsf.base.bean.BaseBean;
 import com.hbsf.base.bean.BaseObjectBean;
 import com.hbsf.base.model.BaseModel;
 import com.hbsf.common.net.RetrofitClient;
@@ -47,9 +48,12 @@ public class LoginModel extends BaseModel<LoginContract.Persenter, LoginApi> imp
         UserUtils.updataUserInfo(email,icon, id, password, type, username, desc);
     }
 
-
     @Override
-    public void handleResult(BaseObjectBean t) {
-        loginSuccess((LoginBean) t.getResult());
+    public void handleResult(BaseBean t) {
+
+        if (t instanceof BaseObjectBean) {
+            loginSuccess((LoginBean)((BaseObjectBean)t).getResult());
+        }
+
     }
 }

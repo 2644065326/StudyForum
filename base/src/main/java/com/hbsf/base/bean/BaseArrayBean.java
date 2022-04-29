@@ -4,7 +4,7 @@ import com.hbsf.base.api.IBaseBean;
 
 import java.util.List;
 
-public class BaseArrayBean<T> {
+public class BaseArrayBean<T> extends BaseBean{
 
     /**
      * status : 1
@@ -12,24 +12,16 @@ public class BaseArrayBean<T> {
      * result : [] 数组
      */
 
-    private int errorCode;
-    private String errorMsg;
+
     private List<T> result;
+    private int page;
 
-    public int getErrorCode() {
-        return errorCode;
+    public int getPage() {
+        return page;
     }
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setPage(int page) {
+        this.page = page;
     }
 
     public List<T> getResult() {

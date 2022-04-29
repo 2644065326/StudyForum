@@ -1,6 +1,8 @@
 package com.hbsf.base.rx;
 
+import com.hbsf.base.api.IBaseBean;
 import com.hbsf.base.api.IBaseModel;
+import com.hbsf.base.bean.BaseBean;
 import com.hbsf.base.bean.BaseObjectBean;
 import com.hbsf.base.model.BaseModel;
 import com.hbsf.base.mvp.view.IBaseMVPView;
@@ -9,7 +11,7 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 
-public class BaseObserver<T extends BaseObjectBean, V extends IBaseMVPView, M extends IBaseModel> implements Observer<T> {
+public class BaseObserver<T extends BaseBean, V extends IBaseMVPView, M extends IBaseModel> implements Observer<T> {
     private V mView;
     private M mModel;
 
