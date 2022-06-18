@@ -61,7 +61,8 @@ public class NewsChannelFragment extends BaseMVPFragment<NewsListContract.Persen
         channelName = getArguments().getString("name");
         channelType = getArguments().getString("type");
         mPresenter = new NewsPresenter(this, channelId, channelName, channelType);
-        mPresenter.loadNextPage(false);
+        //mPresenter.loadNextPage(false);
+        mPresenter.loadCacheNews();
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {

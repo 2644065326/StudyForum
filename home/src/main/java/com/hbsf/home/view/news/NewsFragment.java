@@ -27,7 +27,8 @@ public class NewsFragment extends BaseMVPFragment<NewsChannlesContract.Persenter
         viewPager.setOffscreenPageLimit(2);
         mPresenter = getPresenter();
         adapter = new NewsFragmentAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        mPresenter.loadNewsChannelList();
+        //mPresenter.loadNewsChannelList();
+        mPresenter.loadCacheChannels();
     }
 
 

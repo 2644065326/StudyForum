@@ -81,7 +81,6 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 
 
-
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_PICTURE_TITLE) {
@@ -90,8 +89,9 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             return new BaseViewHolder(new TitleItemView(parent.getContext()));
         } else if (viewType == VIEW_TYPE_MORE_PICTURE_TITLE) {
             return new BaseViewHolder(new MorePictureItemView(parent.getContext()));
+        } else {
+            return new BaseViewHolder(new TitleItemView(parent.getContext()));
         }
-        return null;
     }
 
     @Override

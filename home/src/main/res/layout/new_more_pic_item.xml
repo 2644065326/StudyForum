@@ -29,6 +29,7 @@
             card_view:contentPadding="0dp">
 
             <ImageView
+                android:src="@drawable/test"
                 android:id="@+id/more_pic_left_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -47,6 +48,7 @@
             card_view:contentPadding="0dp">
 
             <ImageView
+                android:src="@drawable/test"
                 android:id="@+id/more_pic_mid_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -63,6 +65,7 @@
             card_view:contentPadding="0dp">
 
             <ImageView
+                android:src="@drawable/test"
                 android:id="@+id/more_pic_right_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

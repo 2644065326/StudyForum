@@ -35,19 +35,18 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
-@AutoService(Processor.class) // 开启
-@SupportedAnnotationTypes({ProcessorConfig.PARAMETER_PACKAGE}) // 我们服务的注解
-@SupportedSourceVersion(SourceVersion.RELEASE_7) // 同学们：这个是必填的哦
+@AutoService(Processor.class)
+@SupportedAnnotationTypes({ProcessorConfig.PARAMETER_PACKAGE})
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 
 public class ParameterProcessor extends AbstractProcessor {
 
-    private Elements elementUtils; // 类信息
-    private Types typeUtils;  // 具体类型
-    private Messager messager; // 日志
+    private Elements elementUtils;
+    private Types typeUtils;
+    private Messager messager;
     private Filer filer;  // 生成器
 
-    // 临时map存储，用来存放被@Parameter注解的属性集合，生成类文件时遍历
-    // key:类节点, value:被@Parameter注解的属性集合
+
     private Map<TypeElement, List<Element>> tempParameterMap = new HashMap<>();
 
     @Override
@@ -68,30 +67,23 @@ public class ParameterProcessor extends AbstractProcessor {
 
         // 扫描的时候，看那些地方使用到了@Parameter注解
         if (!ProcessorUtils.isEmpty(set)) {
-            // 获取所有被 @Parameter 注解的 元素（属性）集合
+
             Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(Parameter.class);
 
             if (!ProcessorUtils.isEmpty(elements)) {
-                // TODO　给仓库 存储相关信息
                 for (Element element : elements) { // element == name， sex,  age
-
-                    // 字段节点的上一个节点 类节点==Key
-                    // 注解在属性的上面，属性节点父节点 是 类节点
                     TypeElement enclosingElement = (TypeElement) element.getEnclosingElement();
-
-                    // enclosingElement == Personal_MainActivity == key
 
                     if (tempParameterMap.containsKey(enclosingElement)) {
                         tempParameterMap.get(enclosingElement).add(element);
-                    } else { // 没有key Personal_MainActivity
+                    } else {
                         List<Element> fields = new ArrayList<>();
                         fields.add(element);
                         tempParameterMap.put(enclosingElement, fields); // 加入缓存
                     }
-                } // for end  缓存 tempParameterMap有值了
+                }
 
-                // TODO 生成类文件
-                // 判断是否有需要生成的类文件
+                // 类文件
                 if (ProcessorUtils.isEmpty(tempParameterMap)) return true;
 
                 TypeElement activityType = elementUtils.getTypeElement(ProcessorConfig.ACTIVITY_PACKAGE);
@@ -104,8 +96,7 @@ public class ParameterProcessor extends AbstractProcessor {
                 // 循环遍历 缓存tempParameterMap
                 // 可能很多地方都使用了 @Parameter注解，那么就需要去遍历 仓库
                 for (Map.Entry<TypeElement, List<Element>> entry : tempParameterMap.entrySet()) {
-                    // key：   Personal_MainActivity
-                    // value： [name,sex,age]
+
                     TypeElement typeElement = entry.getKey();
 
                     // 非Activity直接报错
@@ -141,14 +132,14 @@ public class ParameterProcessor extends AbstractProcessor {
 
                     // 开始生成文件，例如：PersonalMainActivity$$Parameter
                     try {
-                        JavaFile.builder(className.packageName(), // 包名
-                                TypeSpec.classBuilder(finalClassName) // 类名
+                        JavaFile.builder(className.packageName(),
+                                TypeSpec.classBuilder(finalClassName)
                                         .addSuperinterface(ClassName.get(parameterType)) //  implements ParameterGet 实现ParameterLoad接口
-                                        .addModifiers(Modifier.PUBLIC) // public修饰符
-                                        .addMethod(factory.build()) // 方法的构建（方法参数 + 方法体）
-                                        .build()) // 类构建完成
-                                .build() // JavaFile构建完成
-                                .writeTo(filer); // 文件生成器开始生成类文件
+                                        .addModifiers(Modifier.PUBLIC)
+                                        .addMethod(factory.build())
+                                        .build())
+                                .build()
+                                .writeTo(filer);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

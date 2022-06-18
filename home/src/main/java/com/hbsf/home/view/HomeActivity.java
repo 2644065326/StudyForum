@@ -72,7 +72,7 @@ public class HomeActivity extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
 
         viewPager.setCanScroll(false);
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(1);
         //设置viewPager的Adapter，得到当前的Fragment页面
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @NonNull

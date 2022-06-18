@@ -96,7 +96,6 @@ public class RouterManager {
         String groupClassName = "com.hbsf." + group + "." + "arouter.group." +FILE_GROUP_NAME + group;
         Log.e("navigation", "navigation: groupClassName=" + groupClassName);
 
-
         try {
             // TODO 第一步 读取路由组Group类文件
             ARouterGroup loadGroup = groupLruCache.get(group);

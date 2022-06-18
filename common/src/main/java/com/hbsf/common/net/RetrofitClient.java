@@ -1,5 +1,7 @@
 package com.hbsf.common.net;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
@@ -8,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static volatile Retrofit instance;
-    private static String baseUrl = "https://www.wanandroid.com";
+    private static String baseUrl = "https://111";
     private static OkHttpClient okHttpClient;
 
     public static Retrofit getInstance() {
@@ -34,6 +36,8 @@ public class RetrofitClient {
     private static OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) {
             okHttpClient = new OkHttpClient().newBuilder()
+                    .connectTimeout(1, TimeUnit.SECONDS)
+                    .readTimeout(1, TimeUnit.SECONDS)
                     .build();
 
         }

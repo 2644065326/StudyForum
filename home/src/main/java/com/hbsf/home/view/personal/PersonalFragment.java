@@ -48,8 +48,8 @@ public class PersonalFragment extends BaseMVPFragment implements View.OnClickLis
     }
 
     private void initUserInfo() {
-        userNameTV.setText(UserUtils.getInstance().getUsername());
-        userDescTV.setText(UserUtils.getInstance().getDesc());
+//        userNameTV.setText(UserUtils.getInstance().getUsername());
+//        userDescTV.setText(UserUtils.getInstance().getDesc());
         Glide.with(getContext())
                 .load(R.drawable.test)
 //                .load(UserUtils.getInstance().getIcon())

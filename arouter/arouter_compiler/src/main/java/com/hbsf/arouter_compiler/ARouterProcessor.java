@@ -38,50 +38,31 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
-/**
- * 同学们注意：编码此类，记住就是一个字（细心，细心，细心），出了问题debug真的不好调试
- */
 
-// AutoService则是固定的写法，加个注解即可
-// 通过auto-service中的@AutoService可以自动生成AutoService注解处理器，用来注册
-// 用来生成 META-INF/services/javax.annotation.processing.Processor 文件
 @AutoService(Processor.class)
-
-// 允许/支持的注解类型，让注解处理器处理
 @SupportedAnnotationTypes({ProcessorConfig.AROUTER_PACKAGE})
-
-// 指定JDK编译版本
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-
-// 注解处理器接收的参数
 @SupportedOptions({ProcessorConfig.OPTIONS, ProcessorConfig.APT_PACKAGE})
-
 public class ARouterProcessor extends AbstractProcessor {
 
-    // 操作Element的工具类（类，函数，属性，其实都是Element）
     private Elements elementTool;
 
-    // type(类信息)的工具类，包含用于操作TypeMirror的工具方法
     private Types typeTool;
 
-    // Message用来打印 日志相关信息
     private Messager messager;
 
-    // 文件生成器， 类 资源 等，就是最终要生成的文件 是需要Filer来完成的
     private Filer filer;
 
-    private String options; // 各个模块传递过来的模块名 例如：app order personal
-    private String aptPackage; // 各个模块传递过来的目录 用于统一存放 apt生成的文件
+    private String options;
+    private String aptPackage;
 
-    // 生成path文件的中间体，一个组可能有好多路径，所以是list
-    private Map<String, List<RouterBean>> mAllPathMap = new HashMap<>(); // 目前是一个
+    private Map<String, List<RouterBean>> mAllPathMap = new HashMap<>();
 
-    // 生成group文件的中间体，其实后期生成文件只需要String，类名就可以了
     private Map<String, String> mAllGroupMap = new HashMap<>();
 
     private int i = 0;
 
-    // 做初始化工作，就相当于 Activity中的 onCreate函数一样的作用
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
@@ -115,15 +96,11 @@ public class ARouterProcessor extends AbstractProcessor {
         TypeElement callType = elementTool.getTypeElement(ProcessorConfig.CALL);
         TypeMirror callMirror = callType.asType();
 
-        // 全部被注解的集合，通过这个可以拿到相应的Activity
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ARouter.class);
 
-        // 获取Activity，后期进行注解注解地方的判断是否符合要求
         TypeElement activityType = elementTool.getTypeElement(ProcessorConfig.ACTIVITY_PACKAGE);
-        // 拿到Activity类信息
         TypeMirror activityMirror = activityType.asType();
 
-        // 遍历所有的被ARouter注解的节点
         for (Element element : elements) {
 
             // 获取类名，比如MainActivity
@@ -247,15 +224,15 @@ public class ARouterProcessor extends AbstractProcessor {
         messager.printMessage(Diagnostic.Kind.NOTE, "APT creat group path :" +
                 aptPackage + "." + finalClassName);
 
-        // 生成类文件：ARouter$$Group$$app
+
         JavaFile.builder(aptPackage + ProcessorConfig.PACKAGE_GEGROUP_NAME, // 包名
-                TypeSpec.classBuilder(finalClassName) // 类名
-                .addSuperinterface(ClassName.get(groupType)) // 实现ARouterLoadGroup接口 implements ARouterGroup
-                .addModifiers(Modifier.PUBLIC) // public修饰符
-                .addMethod(methodBuidler.build()) // 方法的构建（方法参数 + 方法体）
-                .build()) // 类构建完成
-                .build() // JavaFile构建完成
-                .writeTo(filer); // 文件生成器开始生成类文件
+                TypeSpec.classBuilder(finalClassName)
+                .addSuperinterface(ClassName.get(groupType))
+                .addModifiers(Modifier.PUBLIC)
+                .addMethod(methodBuidler.build())
+                .build())
+                .build()
+                .writeTo(filer);
     }
 
     /**
@@ -271,27 +248,27 @@ public class ARouterProcessor extends AbstractProcessor {
 
         //返回值
         TypeName methodReturn = ParameterizedTypeName.get(
-                  ClassName.get(Map.class),         // Map
-                  ClassName.get(String.class),      // Map<String,
-                  ClassName.get(RouterBean.class)   // Map<String, RouterBean>
+                  ClassName.get(Map.class),
+                  ClassName.get(String.class),
+                  ClassName.get(RouterBean.class)
         );
 
         // 便利中间map，依次创建类
         for (Map.Entry<String, List<RouterBean>> entry : mAllPathMap.entrySet()) {
             // 方法
             MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(ProcessorConfig.PATH_METHOD_NAME)
-                    .addAnnotation(Override.class) // 给方法上添加注解  @Override
-                    .addModifiers(Modifier.PUBLIC) // public修饰符
-                    .returns(methodReturn) // 把Map<String, RouterBean> 加入方法返回
+                    .addAnnotation(Override.class)
+                    .addModifiers(Modifier.PUBLIC)
+                    .returns(methodReturn)
                     ;
 
             // Map<String, RouterBean> pathMap = new HashMap<>(); // $N == 变量 为什么是这个，因为变量有引用 所以是$N
             methodBuilder.addStatement("$T<$T, $T> $N = new $T<>()",
-                    ClassName.get(Map.class),           // Map
-                    ClassName.get(String.class),        // Map<String,
-                    ClassName.get(RouterBean.class),    // Map<String, RouterBean>
-                    ProcessorConfig.PATH_VAR1,          // Map<String, RouterBean> pathMap
-                    ClassName.get(HashMap.class)        // Map<String, RouterBean> pathMap = new HashMap<>();
+                    ClassName.get(Map.class),
+                    ClassName.get(String.class),
+                    ClassName.get(RouterBean.class),
+                    ProcessorConfig.PATH_VAR1,
+                    ClassName.get(HashMap.class)
                     );
 
             // 同组下会有好几个类

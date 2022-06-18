@@ -1,5 +1,12 @@
 package com.hbsf.base.mvp.view;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 
 import com.hbsf.base.api.IBasePresenter;
@@ -23,6 +30,25 @@ public abstract class BaseMVPFragment<T extends IBasePresenter> extends BaseFrag
             mPresenter.detachView();
         }
         super.onDestroyView();
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.e(getClass().getSimpleName(), "onCreateView");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e(getClass().getSimpleName(), "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(getClass().getSimpleName(), "onPause");
     }
 
     /**

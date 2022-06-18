@@ -24,11 +24,11 @@
 
 
         <androidx.appcompat.widget.SearchView
-            android:layout_marginTop="5dp"
             android:id="@+id/top_bar_search_edit"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_toStartOf="@+id/top_bar_right_img"
             android:layout_toEndOf="@+id/top_bar_left_img"
